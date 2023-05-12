@@ -1,0 +1,31 @@
+Il cliente richiede di sviluppare un sistema di gestione di una galleria fotografica geocalizzata condivisa. 
+Si attribuisce ad ogni foto: un ID, un utente, il dispositivo con cui è stata scattata e (se necesasario) il luogo 
+in cui è stata scattata. Si faccia noto che,  ogni foto ha un unico ID che lo identifica univocamente. 
+Ogni foto deve avere necessariamente un utente, ma un utente può non avere foto. Il dispositivo con cui è stata 
+scattata non deve essere necessariamente riportato. Il luogo dello scatto viene indentificato univocamente dalle coordinate 
+geografiche, ma data la possibilità, un nome mnemonico può accompagnare le coordinate. Ogni foto può raffigurare uno o più soggetti,
+come: autoscatti, foto di gruppo, eventi, paesaggi, ed altri, con il particolare caso che la foto può anche non raffigurare niente.
+//soggetto è un entintà (debole) in relazione a foto, con un singolo attributo "tipo di soggetto"//
+Ogni foto può raffigurare diversi utenti. //implementato con una relazione tra utente e foto//
+
+Ogni utente ha sua disposizione una galleria fotografica personale, al suo interno sono presenti solo foto scattate dal proprietario della galleria, ma che comunque sono visibili dal resto degli utenti. Un utente che non ha scattato foto, avrà una galleria personale vuota.
+
+Si possono creare gallerie condivise tra utenti, dove ogni partecipante può inserire foto a suo piacimento dalla propria galleria personale. Il creatore della galleria condivisa ha i seguenti privilegi:
+-assegnazione di un nome mnemonico alla galleria;
+-gestione degli partecipanti; può rimuovere dei partecipanti dalla galleria, in tal caso, le foto vengono rimosse.
+-gestione foto; può rimouvere foto, senza il consenso dei partecipanti, ma non può aggiungere foto da gallerie personali altrui.
+Gli utenti non admin possono: 
+-gestire foto; inserire e rimuovere solo le foto che provengono dalla propria galleria personale.
+-smettere di partecipare alla galleria, in tal caso vengono rimosse le foto del utente che abbandona.
+Il contenuto della galleria condivisa è visibile solo dagli utenti facenti parte.
+
+Una foto può essere resa privata dall'autore di quest'ultima. Le foto private saranno visibili solo dall'autore, nel caso la foto sia presente in una galleria condivisa, anche li, non sarà visibile agli altri utenti.
+L'eliminazione di una foto da una galleria personale, non comporta la rimozione della foto dalle gallerie condivise, a meno che questa non sia stata resa privata in precedenza.
+
+Le operazioni eseguibili dal sistema sono: 
+1) recupero di tutte le fotografie che sono state scattate nello stesso luogo; //cioè stesso nome mnemonico != da NULL//
+2) recupero di fotografie che condividono lo stesso soggetto; //cioè stesso soggetto != da NULL//
+3) classifica top 3 luoghi più immortalati;
+4) creazione di uno slideshow con soggetto comune. //il sistema prende un massimo di N foto da gallerie personali o condivise, le foto che finiscono nello slideshow sono scelte a mano dall'utente. le foto vanno tracciate e lo slideshow va descritto.//
+
+Il sistema ha un amministratore che gestisce la base di dati, che può eliminare un utente, in tal caso le foto dell'utente rimosso dal sistema, vengono cancellate insieme alla galeria personale, se delle foto rappresentano altri utenti, le foto non vengono rimosse dalla galleria condivisa.
