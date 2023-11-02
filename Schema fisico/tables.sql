@@ -32,11 +32,6 @@ CREATE TABLE IF NOT EXISTS galleria.FOTO(
         ON UPDATE CASCADE ON DELETE NO ACTION
 );
 
---ON UPDATE si usa cascade nell'eventualita' che coordinate o autore venga aggiornato
---ON DELETE si usa no action per evitare la cancellazione di una tupla della tabella foto, alla cancellazione di una coordinata/utente
-
---creare trigger per il controllo di eliminazione di foto/utente
-
 CREATE TABLE IF NOT EXISTS galleria.SOGGETTO(
     Foto galleria.id_object_dt NOT NULL,
     NomeSoggetto VARCHAR(30) NOT NULL UNIQUE,
@@ -70,8 +65,6 @@ CREATE TABLE IF NOT EXISTS galleria.GALLERIA(
         ON UPDATE CASCADE ON DELETE NO ACTION
 );
 
---CREARE TRIGGER PER PASSAGGIO DI OWNERSHIP DI UNA GALLERIA CONDIVISA E CONTROLLO SE PERSONALE O MENO
-
 CREATE TABLE IF NOT EXISTS galleria.COMPONE(
 
     IDVideo galleria.id_object_dt  NOT NULL,
@@ -98,8 +91,6 @@ CREATE TABLE IF NOT EXISTS galleria.CONTENUTA(
         ON UPDATE CASCADE ON DELETE NO ACTION
 );
 
---CREARE TRIGGER DEL CONTROLLO PER ELIMINAZIONE DI UNA FOTO
-
 CREATE TABLE IF NOT EXISTS galleria.PARTECIPA(
 
     IDGalleria galleria.id_object_dt  NOT NULL,
@@ -112,7 +103,3 @@ CREATE TABLE IF NOT EXISTS galleria.PARTECIPA(
     CONSTRAINT utente_partecipante_fk FOREIGN KEY (IDUtente) REFERENCES galleria.UTENTE(IDUtente)
         ON UPDATE CASCADE ON DELETE CASCADE
 );
-
---CREARE TRIGGER PER CONTROLLO DELL'OWNER DI UNA GALLERIA CONDIVISA CAMBIA L'OWNER
-
----------------------------------------------------------------------------------------------------------------------------
