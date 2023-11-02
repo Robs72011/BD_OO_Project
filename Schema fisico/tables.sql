@@ -9,14 +9,16 @@ CREATE TABLE IF NOT EXISTS galleria.UTENTE(
 CREATE TABLE IF NOT EXISTS galleria.FOTO(
     IDFoto galleria.id_object_dt NOT NULL,
     Dispositivo VARCHAR(30) NOT NULL DEFAULT 'Nameless', --il dispositivo non e' specificato nel caso l'utente non lo inserisce
-    DataDiScatto DATE,
+    DataDiScatto DATE NOT NULL,
     DataEliminazione DATE DEFAULT NULL,
     Visibilita BOOLEAN NOT NULL DEFAULT TRUE,
     InVideo BOOLEAN NOT NULL DEFAULT FALSE,
-    Coordinate VARCHAR(25) NOT NULL, 
+    Coordinate galleria.coo_dt, 
     Autore galleria.id_user_dt NOT NULL,
 
     CONSTRAINT foto_pk PRIMARY KEY (IDFoto),
+    
+    CHECK(DataDiScatto < DataEliminazione),
 
     CONSTRAINT coordinate_fk FOREIGN KEY (Coordinate) REFERENCES galleria.LUOGO(Coordinate) 
         ON UPDATE CASCADE ON DELETE NO ACTION,
