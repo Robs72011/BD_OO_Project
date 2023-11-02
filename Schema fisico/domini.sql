@@ -1,3 +1,4 @@
+
 DROP SCHEMA IF EXISTS galleria CASCADE;
 CREATE SCHEMA galleria AUTHORIZATION postgres;
 

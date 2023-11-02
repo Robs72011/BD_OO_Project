@@ -7,10 +7,10 @@ CREATE TABLE IF NOT EXISTS galleria.UTENTE(
 
 CREATE TABLE IF NOT EXISTS galleria.LUOGO(
     Coordinate  galleria.coo_dt NOT NULL,
-    Toponimo VARCHAR(30) NOT NULL UNIQUE,
+    Toponimo VARCHAR(30) UNIQUE,
 
     CONSTRAINT luogo_pk PRIMARY KEY (Coordinate)
-);   
+);
 
 CREATE TABLE IF NOT EXISTS galleria.FOTO(
     IDFoto galleria.id_object_dt NOT NULL,
@@ -25,6 +25,7 @@ CREATE TABLE IF NOT EXISTS galleria.FOTO(
     CONSTRAINT foto_pk PRIMARY KEY (IDFoto),
     
     CHECK(DataDiScatto < DataEliminazione),
+    CHECK(IDFoto ~ '^F');
 
     CONSTRAINT coordinate_fk FOREIGN KEY (Coordinate) REFERENCES galleria.LUOGO(Coordinate) 
         ON UPDATE CASCADE ON DELETE NO ACTION,
@@ -48,6 +49,8 @@ CREATE TABLE IF NOT EXISTS galleria.VIDEO(
     TitoloVideo VARCHAR(30) NOT NULL,
     Descrizione TEXT,
 
+    CHECK(IDVideo ~ '^V'),
+
     CONSTRAINT video_pk PRIMARY KEY (IDVideo)
 
 );
@@ -60,6 +63,8 @@ CREATE TABLE IF NOT EXISTS galleria.GALLERIA(
     Proprietario galleria.id_user_dt  NOT NULL,
 
     CONSTRAINT galleria_pk PRIMARY KEY (IDGalleria),
+
+    CHECK(IDGalleria ~ '^G'),
 
     CONSTRAINT proprietario_fk FOREIGN KEY (Proprietario) REFERENCES galleria.UTENTE(IDUtente)
         ON UPDATE CASCADE ON DELETE NO ACTION
@@ -91,6 +96,8 @@ CREATE TABLE IF NOT EXISTS galleria.CONTENUTA(
         ON UPDATE CASCADE ON DELETE NO ACTION
 );
 
+--CREARE TRIGGER DEL CONTROLLO PER ELIMINAZIONE DI UNA FOTO
+
 CREATE TABLE IF NOT EXISTS galleria.PARTECIPA(
 
     IDGalleria galleria.id_object_dt  NOT NULL,
@@ -103,3 +110,7 @@ CREATE TABLE IF NOT EXISTS galleria.PARTECIPA(
     CONSTRAINT utente_partecipante_fk FOREIGN KEY (IDUtente) REFERENCES galleria.UTENTE(IDUtente)
         ON UPDATE CASCADE ON DELETE CASCADE
 );
+
+--CREARE TRIGGER PER CONTROLLO DELL'OWNER DI UNA GALLERIA CONDIVISA CAMBIA L'OWNER
+
+---------------------------------------------------------------------------------------------------------------------------

@@ -52,20 +52,40 @@ EXECUTE FUNCTION galleria.check_data_eliminazione_fn();
 
 --------------------------------------------------------------------------------------------------------------------------
 
---CREARE TRIGGER PER CONTROLLARE CHE L'INZIALE DELL'ID UNA FOTO SIA F, UN VIDEO V E UNA GALLERIA G
-
---CREARE TRIGGER PER CONTROLLARE CHE GLI INTERI DELLE COORDINATE VADANO DA 0 A 90 E DA 0 A 180
+--trigger che controlla che -90 <= longitudine <= 90 &&  -180 <= latitudine <= 180
 CREATE OR REPLACE FUNCTION galleria.check_valori_coordinate_fn()
 RETURNS TRIGGER
 AS $$
+DECLARE
+    check_coordinate CHAR(14) := NEW.coordinate;
+    longitudine float;
+    latitudine float;
 BEGIN
+    longitudine := SUBSTRING(check_coordinate FROM 2 FOR 5 )::float;
+    latitudine := SUBSTRING(check_coordinate FROM 9 FOR 5 )::float;
+    
+    IF longitudine > 90.00 OR latitudine > 180.00 THEN
+        RAISE EXCEPTION 'Il valore di logintudine, oppure di latitudine, vanno oltre l''insieme di valori ammessi.';
+    END IF;
+    
+    RETURN NEW;
 
 END;
 $$
 LANGUAGE PLPGSQL;
 
 CREATE OR REPLACE TRIGGER check_valori_coordinate_tr
-BEFORE UPDATE 
-ON galleria.FOTO
+BEFORE INSERT 
+ON galleria.LUOGO
 FOR EACH ROW
 EXECUTE FUNCTION galleria.check_valori_coordinate_fn();
+
+--------------------------------------------------------------------------------------------------------------------------
+
+--CREARE TRIGGER PER IL CONTROLLO DI ELIMINAZIONE DI FOTO/UTENTE
+
+--CREARE TRIGGER DEL CONTROLLO PER ELIMINAZIONE DI UNA FOTO
+
+--CREARE TRIGGER PER CONTROLLO DELL'OWNER DI UNA GALLERIA CONDIVISA CAMBIA L'OWNER
+
+--CREARE TRIGGER PER PASSAGGIO DI OWNERSHIP DI UNA GALLERIA CONDIVISA E CONTROLLO SE PERSONALE O MENO
