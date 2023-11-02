@@ -5,6 +5,12 @@ CREATE TABLE IF NOT EXISTS galleria.UTENTE(
     CONSTRAINT utente_pk PRIMARY KEY (IDUtente)
 );
 
+CREATE TABLE IF NOT EXISTS galleria.LUOGO(
+    Coordinate  galleria.coo_dt NOT NULL,
+    Toponimo VARCHAR(30) NOT NULL UNIQUE,
+
+    CONSTRAINT luogo_pk PRIMARY KEY (Coordinate)
+);   
 
 CREATE TABLE IF NOT EXISTS galleria.FOTO(
     IDFoto galleria.id_object_dt NOT NULL,
