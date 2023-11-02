@@ -30,3 +30,5 @@ CREATE TABLE IF NOT EXISTS galleria.LUOGO(
 
     CONSTRAINT luogo_pk PRIMARY KEY (Coordinate)
 );
+
+--ciao
