@@ -1,5 +1,5 @@
 --trigger che permette di caricare luoghi solo tramite foto
-CREATE OR REPLACE FUNCTION a_check_luogo_fn()
+CREATE OR REPLACE FUNCTION galleria.a_check_luogo_fn()
 RETURNS TRIGGER
 AS $$
 DECLARE 
@@ -26,12 +26,12 @@ CREATE OR REPLACE TRIGGER a_check_luogo_tr
 BEFORE INSERT 
 ON FOTO
 FOR EACH ROW
-EXECUTE FUNCTION a_check_luogo_fn();
+EXECUTE FUNCTION galleria.a_check_luogo_fn();
 
 --------------------------------------------------------------------------------------------------------------------------
 
 --trigger che non permette l'aggiornamento della data di eliminazione a null 
-CREATE OR REPLACE FUNCTION check_data_eliminazione_fn()
+CREATE OR REPLACE FUNCTION galleria.check_data_eliminazione_fn()
 RETURNS TRIGGER
 AS $$
 BEGIN    
@@ -50,7 +50,7 @@ CREATE OR REPLACE TRIGGER check_data_eliminazione_tr
 BEFORE UPDATE 
 ON FOTO
 FOR EACH ROW
-EXECUTE FUNCTION check_data_eliminazione_fn();
+EXECUTE FUNCTION galleria.check_data_eliminazione_fn();
 
 --------------------------------------------------------------------------------------------------------------------------
 
