@@ -1,4 +1,4 @@
---trigger che permette di caricare luoghi solo tramite foto
+--trigger che permette di caricare luoghi tramite foto
 CREATE OR REPLACE FUNCTION galleria.check_luogo_fn()
 RETURNS TRIGGER
 AS $$
@@ -28,14 +28,14 @@ EXECUTE FUNCTION galleria.check_luogo_fn();
 
 --------------------------------------------------------------------------------------------------------------------------
 
---trigger che non permette l'aggiornamento della data di eliminazione se gia c'e', oopure la messa a null 
+--trigger che non permette l'aggiornamento della data di eliminazione a null 
 CREATE OR REPLACE FUNCTION galleria.check_data_eliminazione_fn()
 RETURNS TRIGGER
 AS $$
 BEGIN    
     --La data di eliminazione non puo' essere aggiornata, dato che la foto e' gia' stata eliminata
     --La data di eliminazione non puo' essere messa a NULL una volta che e' ne stata inserita una
-    IF NEW.DataEliminazione <> OLD.DataEliminazione OR NEW.DataEliminazione IS NULL THEN
+    IF NEW.DataEliminazione IS NULL THEN
         RAISE EXCEPTION 'La data di eliminazione non è aggiornabile, in quanto la foto è già stata eliminata';
     END IF;
     
