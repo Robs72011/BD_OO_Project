@@ -2,6 +2,7 @@ CREATE TABLE IF NOT EXISTS galleria.UTENTE(
     IDUtente galleria.id_user_dt NOT NULL,
     Nome VARCHAR(30) NOT NULL,
     IsAdmin BOOLEAN NOT NULL DEFAULT FALSE,
+    
     CONSTRAINT utente_pk PRIMARY KEY (IDUtente)
 );
 
@@ -25,7 +26,7 @@ CREATE TABLE IF NOT EXISTS galleria.FOTO(
     CONSTRAINT foto_pk PRIMARY KEY (IDFoto),
     
     CHECK(DataDiScatto < DataEliminazione),
-    CHECK(IDFoto ~ '^F');
+    CHECK(IDFoto ~ '^F'),
 
     CONSTRAINT coordinate_fk FOREIGN KEY (Coordinate) REFERENCES galleria.LUOGO(Coordinate) 
         ON UPDATE CASCADE ON DELETE NO ACTION,

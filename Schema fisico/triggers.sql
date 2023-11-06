@@ -23,10 +23,8 @@ $$
 LANGUAGE PLPGSQL;
 
 CREATE OR REPLACE TRIGGER a_check_luogo_tr
-BEFORE INSERT 
-ON FOTO
-FOR EACH ROW
-EXECUTE FUNCTION galleria.a_check_luogo_fn();
+BEFORE INSERT ON galleria.FOTO
+FOR EACH ROW EXECUTE FUNCTION galleria.a_check_luogo_fn();
 
 --------------------------------------------------------------------------------------------------------------------------
 
@@ -47,10 +45,8 @@ $$
 LANGUAGE PLPGSQL;
 
 CREATE OR REPLACE TRIGGER check_data_eliminazione_tr
-BEFORE UPDATE 
-ON FOTO
-FOR EACH ROW
-EXECUTE FUNCTION galleria.check_data_eliminazione_fn();
+BEFORE UPDATE ON galleria.FOTO
+FOR EACH ROWEXECUTE FUNCTION galleria.check_data_eliminazione_fn();
 
 --------------------------------------------------------------------------------------------------------------------------
 
@@ -71,16 +67,13 @@ BEGIN
     END IF;
     
     RETURN NEW;
-
 END;
 $$
 LANGUAGE PLPGSQL;
 
 CREATE OR REPLACE TRIGGER check_valori_coordinate_tr
-BEFORE INSERT 
-ON galleria.LUOGO
-FOR EACH ROW
-EXECUTE FUNCTION galleria.check_valori_coordinate_fn();
+BEFORE INSERT ON galleria.LUOGO
+FOR EACH ROW EXECUTE FUNCTION galleria.check_valori_coordinate_fn();
 
 --------------------------------------------------------------------------------------------------------------------------
 
@@ -91,3 +84,44 @@ EXECUTE FUNCTION galleria.check_valori_coordinate_fn();
 --CREARE TRIGGER PER CONTROLLO DELL'OWNER DI UNA GALLERIA CONDIVISA CAMBIA L'OWNER
 
 --CREARE TRIGGER PER PASSAGGIO DI OWNERSHIP DI UNA GALLERIA CONDIVISA E CONTROLLO SE PERSONALE O MENO
+
+--CREARE TRIGGER ALL'INSERIMENTO DI UN UTENTE CREA LA SUA GALLERIA PERSONALE
+
+--------------------------------------------------------------------------------------------------------------------------
+--All'inserimento di un utente viene creata la sua galleria personale
+CREATE OR REPLACE FUNCTION galleria.crea_gall_personale_fn()
+RETURNS TRIGGER
+AS $$
+BEGIN    
+    INSERT INTO galleria.GALLERIA VALUES (galleria.genera_id('G'), galleria.genera_nome_galleria(NEW.Nome), FALSE, NEW.IDUtente);
+    RETURN NEW;
+END;
+$$
+LANGUAGE PLPGSQL;
+
+CREATE OR REPLACE TRIGGER crea_gall_personale_tr
+AFTER INSERT ON galleria.UTENTE
+FOR EACH ROW EXECUTE FUNCTION galleria.crea_gall_personale_fn();
+
+--------------------------------------------------------------------------------------------------------------------------
+--CRAERE TRIGGER ALL'INSERIMENTO DI UNA FOTO, VIENE INSERITA DIRETTAMENTE NELLA GALLERIA PERSONALE DI CHI LA SCATTA
+CREATE OR REPLACE FUNCTION galleria.insert_foto_gal_priv_fn()
+RETURNS TRIGGER
+AS $$
+DECLARE
+    galleria_target CHAR(10);
+BEGIN
+    SELECT IDGalleria INTO galleria_target
+    FROM galleria.GALLERIA g
+    WHERE g.condivisione = FALSE AND g.proprietario = NEW.autore;
+    
+    INSERT INTO galleria.CONTENUTA VALUES (galleria_target, NEW.IDFoto);
+    
+    RETURN NEW;
+END;
+$$
+LANGUAGE PLPGSQL;
+
+CREATE OR REPLACE TRIGGER insert_foto_gal_priv_tr
+AFTER INSERT ON galleria.FOTO
+FOR EACH ROW EXECUTE FUNCTION galleria.insert_foto_gal_priv_fn();
