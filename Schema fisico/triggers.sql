@@ -140,6 +140,39 @@ AFTER UPDATE ON galleria.FOTO
 FOR EACH ROW EXECUTE FUNCTION galleria.privatizzazione_foto_fn();
 
 --------------------------------------------------------------------------------------------------------------------------
+--trigger che evita l'inserimento di una foto 'non visibile' in una galleria privata
+CREATE OR REPLACE FUNCTION galleria.stop_inserimento_foto_privata_fn()
+RETURNS TRIGGER
+AS $$
+DECLARE
+    check_visibilita BOOLEAN;
+    check_gallery_type BOOLEAN;
+BEGIN
+    
+    SELECT Visibilita INTO check_visibilita
+    FROM galleria.FOTO
+    WHERE IDFOTO = NEW.IDFoto;
+
+    SELECT Condivisione INTO check_gallery_type
+    FROM galleria.GALLERIA
+    WHERE IDGalleria = NEW.IDGalleria;
+
+    IF check_visibilita = FALSE AND check_gallery_type = TRUE THEN
+
+        RAISE EXCEPTION 'La foto non può essere inserita in una galleria condivisa in quanto è stata resa invisibile';
+
+    END IF;
+
+    RETURN NULL;
+END;
+$$
+LANGUAGE PLPGSQL;
+
+CREATE OR REPLACE TRIGGER stop_inserimento_foto_privata_tr
+BEFORE INSERT ON galleria.CONTENUTA
+FOR EACH ROW EXECUTE FUNCTION galleria.stop_inserimento_foto_privata_fn();
+
+--------------------------------------------------------------------------------------------------------------------------
 --CREARE TRIGGER PER IL CONTROLLO DI ELIMINAZIONE DI FOTO/UTENTE
 
 --CREARE TRIGGER PER ELIMINAZIONE DI UNA FOTO
@@ -147,5 +180,3 @@ FOR EACH ROW EXECUTE FUNCTION galleria.privatizzazione_foto_fn();
 --CREARE TRIGGER PER CONTROLLO DELL'OWNER DI UNA GALLERIA CONDIVISA PER CAMBIO DI OWNER
 
 --CREARE TRIGGER PER PASSAGGIO DI OWNERSHIP DI UNA GALLERIA CONDIVISA E CONTROLLO SE PERSONALE O MENO
-
---CREARE TRIGGER CHE EVITA L'INSERIMENTO DI UNA FOTO CON VISIBILITA A FALSE IN UNA GALLERIA CONDIVISA
