@@ -34,7 +34,7 @@ AS $$
 BEGIN    
     --La data di eliminazione non puo' essere aggiornata, dato che la foto e' gia' stata eliminata
     --La data di eliminazione non puo' essere messa a NULL una volta che e' ne stata inserita una
-    IF NEW.DataEliminazione <> OLD.DataEliminazione OR NEW.DataEliminazione IS NULL THEN
+    IF NEW.DataEliminazione <> OLD.DataEliminazione THEN
         RAISE EXCEPTION 'La data di eliminazione non è aggiornabile, in quanto la foto è già stata eliminata';
     END IF;
     
@@ -45,7 +45,7 @@ LANGUAGE PLPGSQL;
 
 CREATE OR REPLACE TRIGGER check_data_eliminazione_tr
 BEFORE UPDATE ON galleria.FOTO
-FOR EACH ROWEXECUTE FUNCTION galleria.check_data_eliminazione_fn();
+FOR EACH ROW EXECUTE FUNCTION galleria.check_data_eliminazione_fn();
 
 --------------------------------------------------------------------------------------------------------------------------
 --trigger che controlla che -90 <= longitudine <= 90 &&  -180 <= latitudine <= 180
@@ -149,21 +149,24 @@ DECLARE
     check_gallery_type BOOLEAN;
 BEGIN
     
+    --controllo la visibilta' della foto
     SELECT Visibilita INTO check_visibilita
     FROM galleria.FOTO
     WHERE IDFOTO = NEW.IDFoto;
 
+    --controllo se la galleria e' condivisa o meno
     SELECT Condivisione INTO check_gallery_type
     FROM galleria.GALLERIA
     WHERE IDGalleria = NEW.IDGalleria;
 
+    --se la foto e' 'invisibile' e la galleria condivisa, impedisco l'inserimento
     IF check_visibilita = FALSE AND check_gallery_type = TRUE THEN
 
         RAISE EXCEPTION 'La foto non può essere inserita in una galleria condivisa in quanto è stata resa invisibile';
 
     END IF;
 
-    RETURN NULL;
+    RETURN NEW;
 END;
 $$
 LANGUAGE PLPGSQL;
@@ -173,10 +176,40 @@ BEFORE INSERT ON galleria.CONTENUTA
 FOR EACH ROW EXECUTE FUNCTION galleria.stop_inserimento_foto_privata_fn();
 
 --------------------------------------------------------------------------------------------------------------------------
---CREARE TRIGGER PER IL CONTROLLO DI ELIMINAZIONE DI FOTO/UTENTE
+--trigger che non elimina la foto dalla tabella foto, ma aggiorna solo la data di eliminazione.
+CREATE OR REPLACE FUNCTION galleria.eliminazione_foto_in_video_fn()
+RETURNS TRIGGER
+AS $$
+BEGIN
+    IF OLD.InVideo = TRUE THEN
+        UPDATE galleria.FOTO
+        SET DataEliminazione = current_date
+        WHERE OLD.IDFoto = IDFoto;
 
+        RAISE NOTICE 'Dato che le foto che sono, o sono state, parte di un video vengono tracciate, viene aggiornata la data di eliminazione.';
+        
+        RETURN NEW;
+    END IF;
+
+    RETURN OLD;
+END;
+$$
+LANGUAGE PLPGSQL;
+
+CREATE OR REPLACE TRIGGER eliminazione_foto_in_video_tr
+BEFORE DELETE ON galleria.FOTO
+FOR EACH ROW EXECUTE FUNCTION galleria.eliminazione_foto_in_video_fn();
+--------------------------------------------------------------------------------------------------------------------------
 --CREARE TRIGGER PER ELIMINAZIONE DI UNA FOTO
 
+--------------------------------------------------------------------------------------------------------------------------
 --CREARE TRIGGER PER CONTROLLO DELL'OWNER DI UNA GALLERIA CONDIVISA PER CAMBIO DI OWNER
 
+--------------------------------------------------------------------------------------------------------------------------
 --CREARE TRIGGER PER PASSAGGIO DI OWNERSHIP DI UNA GALLERIA CONDIVISA E CONTROLLO SE PERSONALE O MENO
+
+--------------------------------------------------------------------------------------------------------------------------
+--CREARE TRIGGER PER IL CONTROLLO DI ELIMINAZIONE DI FOTO/UTENTE
+
+--------------------------------------------------------------------------------------------------------------------------
+--CREARE TRIGGER PER IMPEDIRE A IN VIDEO DI PASSARE DA TRUE A FALSE
