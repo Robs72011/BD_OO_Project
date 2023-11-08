@@ -1,4 +1,4 @@
---trigger che permette di caricare luoghi solo tramite foto
+--trigger che permette di caricare luoghi tramite foto
 CREATE OR REPLACE FUNCTION galleria.a_check_luogo_fn()
 RETURNS TRIGGER
 AS $$
@@ -27,7 +27,7 @@ BEFORE INSERT ON galleria.FOTO
 FOR EACH ROW EXECUTE FUNCTION galleria.a_check_luogo_fn();
 
 --------------------------------------------------------------------------------------------------------------------------
---trigger che non permette l'aggiornamento della data di eliminazione a null 
+--trigger che non permette l'aggiornamento della data di eliminazione
 CREATE OR REPLACE FUNCTION galleria.check_data_eliminazione_fn()
 RETURNS TRIGGER
 AS $$
@@ -113,7 +113,7 @@ AFTER INSERT ON galleria.FOTO
 FOR EACH ROW EXECUTE FUNCTION galleria.insert_foto_gal_priv_fn();
 
 --------------------------------------------------------------------------------------------------------------------------
---trigger per la privatizzazione di una foto, impostando a false la visibilita' la foto viene rimossa da tutte le gallerie tranne quelli personali
+--trigger per la privatizzazione di una foto, impostando a false la visibilita' la foto viene rimossa da tutte le gallerie tranne quelli personale
 CREATE OR REPLACE FUNCTION galleria.privatizzazione_foto_fn()
 RETURNS TRIGGER
 AS $$
@@ -176,29 +176,48 @@ BEFORE INSERT ON galleria.CONTENUTA
 FOR EACH ROW EXECUTE FUNCTION galleria.stop_inserimento_foto_privata_fn();
 
 --------------------------------------------------------------------------------------------------------------------------
---trigger che non elimina la foto dalla tabella foto, ma aggiorna solo la data di eliminazione.
-CREATE OR REPLACE FUNCTION galleria.eliminazione_foto_in_video_fn()
+--trigger che gestisce una foto appena eliminata da una galleria personale, se fa parte di un video viene aggiornata la data di eliminazione alla data attuale, altrimenti la tupla viene eliminata
+CREATE OR REPLACE FUNCTION galleria.gestione_eliminazione_foto_fn()
 RETURNS TRIGGER
 AS $$
+DECLARE
+    parte_di_un_video BOOLEAN;
+    check_tipo_galleria BOOLEAN;
 BEGIN
-    IF OLD.InVideo = TRUE THEN
-        UPDATE galleria.FOTO
-        SET DataEliminazione = current_date
-        WHERE OLD.IDFoto = IDFoto;
+    
+    --controllo che la galleria sia privata per non intrecciare questo trigger con quello della privatizzazione
+    SELECT Condivisione INTO check_tipo_galleria
+    FROM galleria.GALLERIA
+    WHERE IDGalleria = OLD.IDGalleria;
 
+    IF check_tipo_galleria = TRUE THEN
+        RETURN NULL;
+    END IF;
+
+    SELECT InVideo INTO parte_di_un_video
+    FROM galleria.FOTO
+    WHERE IDFoto = OLD.IDFoto;
+    
+    IF parte_di_un_video = TRUE THEN 
+        
         RAISE NOTICE 'Dato che le foto che sono, o sono state, parte di un video vengono tracciate, viene aggiornata la data di eliminazione.';
         
         RETURN NEW;
+    ELSE
+        
+        DELETE FROM galleria.FOTO WHERE IDFoto = OLD.IDFoto;
+        
     END IF;
-
+    
     RETURN OLD;
+    
 END;
 $$
 LANGUAGE PLPGSQL;
 
-CREATE OR REPLACE TRIGGER eliminazione_foto_in_video_tr
-BEFORE DELETE ON galleria.FOTO
-FOR EACH ROW EXECUTE FUNCTION galleria.eliminazione_foto_in_video_fn();
+CREATE OR REPLACE TRIGGER gestione_eliminazione_foto_in_video_tr
+AFTER DELETE ON galleria.CONTENUTA
+FOR EACH ROW EXECUTE FUNCTION galleria.gestione_eliminazione_foto_fn();
 --------------------------------------------------------------------------------------------------------------------------
 --CREARE TRIGGER PER ELIMINAZIONE DI UNA FOTO
 
@@ -213,3 +232,11 @@ FOR EACH ROW EXECUTE FUNCTION galleria.eliminazione_foto_in_video_fn();
 
 --------------------------------------------------------------------------------------------------------------------------
 --CREARE TRIGGER PER IMPEDIRE A IN VIDEO DI PASSARE DA TRUE A FALSE
+
+
+
+
+
+
+
+
