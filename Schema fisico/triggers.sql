@@ -218,6 +218,26 @@ LANGUAGE PLPGSQL;
 CREATE OR REPLACE TRIGGER gestione_eliminazione_foto_in_video_tr
 AFTER DELETE ON galleria.CONTENUTA
 FOR EACH ROW EXECUTE FUNCTION galleria.gestione_eliminazione_foto_fn();
+
+--------------------------------------------------------------------------------------------------------------------------
+--CREARE TRIGGER PER IMPEDIRE A IN VIDEO DI PASSARE DA TRUE A FALSE
+CREATE OR REPLACE FUNCTION galleria.gestione_eliminazione_foto_fn()
+RETURNS TRIGGER
+AS $$
+BEGIN
+    IF OLD.InVideo = TRUE AND NEW.InVideo = FALSE THEN
+        RAISE EXCEPTION 'La foto, anche se eliminata dopo essere stata messa in video, deve essere tracciata lo stesso';
+    ELSE
+        RETURN NEW;
+    END IF;
+END;
+$$
+LANGUAGE PLPGSQL;
+
+CREATE OR REPLACE TRIGGER gestione_eliminazione_foto_in_video_tr
+BEFORE UPDATE ON galleria.FOTO
+FOR EACH ROW EXECUTE FUNCTION galleria.gestione_eliminazione_foto_fn();
+
 --------------------------------------------------------------------------------------------------------------------------
 --CREARE TRIGGER PER ELIMINAZIONE DI UNA FOTO
 
@@ -229,14 +249,3 @@ FOR EACH ROW EXECUTE FUNCTION galleria.gestione_eliminazione_foto_fn();
 
 --------------------------------------------------------------------------------------------------------------------------
 --CREARE TRIGGER PER IL CONTROLLO DI ELIMINAZIONE DI FOTO/UTENTE
-
---------------------------------------------------------------------------------------------------------------------------
---CREARE TRIGGER PER IMPEDIRE A IN VIDEO DI PASSARE DA TRUE A FALSE
-
-
-
-
-
-
-
-
