@@ -27,7 +27,6 @@ BEFORE INSERT ON galleria.FOTO
 FOR EACH ROW EXECUTE FUNCTION galleria.a_check_luogo_fn();
 
 --------------------------------------------------------------------------------------------------------------------------
-
 --trigger che non permette l'aggiornamento della data di eliminazione a null 
 CREATE OR REPLACE FUNCTION galleria.check_data_eliminazione_fn()
 RETURNS TRIGGER
@@ -49,7 +48,6 @@ BEFORE UPDATE ON galleria.FOTO
 FOR EACH ROWEXECUTE FUNCTION galleria.check_data_eliminazione_fn();
 
 --------------------------------------------------------------------------------------------------------------------------
-
 --trigger che controlla che -90 <= longitudine <= 90 &&  -180 <= latitudine <= 180
 CREATE OR REPLACE FUNCTION galleria.check_valori_coordinate_fn()
 RETURNS TRIGGER
@@ -76,24 +74,12 @@ BEFORE INSERT ON galleria.LUOGO
 FOR EACH ROW EXECUTE FUNCTION galleria.check_valori_coordinate_fn();
 
 --------------------------------------------------------------------------------------------------------------------------
-
---CREARE TRIGGER PER IL CONTROLLO DI ELIMINAZIONE DI FOTO/UTENTE
-
---CREARE TRIGGER DEL CONTROLLO PER ELIMINAZIONE DI UNA FOTO
-
---CREARE TRIGGER PER CONTROLLO DELL'OWNER DI UNA GALLERIA CONDIVISA CAMBIA L'OWNER
-
---CREARE TRIGGER PER PASSAGGIO DI OWNERSHIP DI UNA GALLERIA CONDIVISA E CONTROLLO SE PERSONALE O MENO
-
---CREARE TRIGGER ALL'INSERIMENTO DI UN UTENTE CREA LA SUA GALLERIA PERSONALE
-
---------------------------------------------------------------------------------------------------------------------------
 --All'inserimento di un utente viene creata la sua galleria personale
 CREATE OR REPLACE FUNCTION galleria.crea_gall_personale_fn()
 RETURNS TRIGGER
 AS $$
 BEGIN    
-    INSERT INTO galleria.GALLERIA VALUES (galleria.genera_id('G'), galleria.genera_nome_galleria(NEW.Nome), FALSE, NEW.IDUtente);
+    INSERT INTO galleria.GALLERIA VALUES (galleria.genera_id_fn('G'), galleria.genera_nome_galleria_fn(NEW.Nome), FALSE, NEW.IDUtente);
     RETURN NEW;
 END;
 $$
@@ -104,7 +90,7 @@ AFTER INSERT ON galleria.UTENTE
 FOR EACH ROW EXECUTE FUNCTION galleria.crea_gall_personale_fn();
 
 --------------------------------------------------------------------------------------------------------------------------
---CRAERE TRIGGER ALL'INSERIMENTO DI UNA FOTO, VIENE INSERITA DIRETTAMENTE NELLA GALLERIA PERSONALE DI CHI LA SCATTA
+--trigger all'inserimento di una foto, nella tabella FOTO, essa viene inserita dirattamente nella galleria personale dell'autore
 CREATE OR REPLACE FUNCTION galleria.insert_foto_gal_priv_fn()
 RETURNS TRIGGER
 AS $$
@@ -125,3 +111,41 @@ LANGUAGE PLPGSQL;
 CREATE OR REPLACE TRIGGER insert_foto_gal_priv_tr
 AFTER INSERT ON galleria.FOTO
 FOR EACH ROW EXECUTE FUNCTION galleria.insert_foto_gal_priv_fn();
+
+--------------------------------------------------------------------------------------------------------------------------
+--trigger per la privatizzazione di una foto, impostando a false la visibilita' la foto viene rimossa da tutte le gallerie tranne quelli personali
+CREATE OR REPLACE FUNCTION galleria.privatizzazione_foto_fn()
+RETURNS TRIGGER
+AS $$
+BEGIN
+    
+    IF NEW.Visibilita = FALSE THEN
+
+        DELETE FROM galleria.CONTENUTA C
+        WHERE EXISTS(
+            SELECT 1
+            FROM galleria.GALLERIA g
+            WHERE c.IDGalleria = g.IDGalleria AND g.condivisione = TRUE AND OLD.IDFoto = c.IDFoto
+        );
+
+    END IF;
+
+    RETURN NULL;
+END;
+$$
+LANGUAGE PLPGSQL;
+
+CREATE OR REPLACE TRIGGER privatizzazione_foto_tr
+AFTER UPDATE ON galleria.FOTO
+FOR EACH ROW EXECUTE FUNCTION galleria.privatizzazione_foto_fn();
+
+--------------------------------------------------------------------------------------------------------------------------
+--CREARE TRIGGER PER IL CONTROLLO DI ELIMINAZIONE DI FOTO/UTENTE
+
+--CREARE TRIGGER PER ELIMINAZIONE DI UNA FOTO
+
+--CREARE TRIGGER PER CONTROLLO DELL'OWNER DI UNA GALLERIA CONDIVISA PER CAMBIO DI OWNER
+
+--CREARE TRIGGER PER PASSAGGIO DI OWNERSHIP DI UNA GALLERIA CONDIVISA E CONTROLLO SE PERSONALE O MENO
+
+--CREARE TRIGGER CHE EVITA L'INSERIMENTO DI UNA FOTO CON VISIBILITA A FALSE IN UNA GALLERIA CONDIVISA

@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS galleria.VIDEO(
 CREATE TABLE IF NOT EXISTS galleria.GALLERIA(
 
     IDGalleria galleria.id_object_dt  NOT NULL,
-    NomeGalelria VARCHAR(30)  NOT NULL,
+    NomeGalleria VARCHAR(30)  NOT NULL,
     Condivisione BOOLEAN DEFAULT FALSE,
     Proprietario galleria.id_user_dt  NOT NULL,
 
