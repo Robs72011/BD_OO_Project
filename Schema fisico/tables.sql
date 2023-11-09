@@ -49,10 +49,14 @@ CREATE TABLE IF NOT EXISTS galleria.VIDEO(
     IDVideo galleria.id_object_dt NOT NULL,
     TitoloVideo galleria.string NOT NULL,
     Descrizione TEXT,
+    Galleria galleria.id_object_dt NOT NULL,
 
     CONSTRAINT check_iniziale_idvideo CHECK(IDVideo ~ '^V'),
 
     CONSTRAINT video_pk PRIMARY KEY (IDVideo)
+
+    CONSTRAINT galleria_fk FOREIGN KEY (Galleria) REFERENCES galleria.GALLERIA(IDGalleria) 
+        ON UPDATE CASCADE ON DELETE NO ACTION
 );
 
 CREATE TABLE IF NOT EXISTS galleria.GALLERIA(
