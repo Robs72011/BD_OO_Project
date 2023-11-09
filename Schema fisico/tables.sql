@@ -45,22 +45,7 @@ CREATE TABLE IF NOT EXISTS galleria.SOGGETTO(
         ON UPDATE CASCADE ON DELETE NO ACTION
 );
 
-CREATE TABLE IF NOT EXISTS galleria.VIDEO(
-    IDVideo galleria.id_object_dt NOT NULL,
-    TitoloVideo galleria.string NOT NULL,
-    Descrizione TEXT,
-    Galleria galleria.id_object_dt NOT NULL,
-
-    CONSTRAINT check_iniziale_idvideo CHECK(IDVideo ~ '^V'),
-
-    CONSTRAINT video_pk PRIMARY KEY (IDVideo)
-
-    CONSTRAINT galleria_fk FOREIGN KEY (Galleria) REFERENCES galleria.GALLERIA(IDGalleria) 
-        ON UPDATE CASCADE ON DELETE NO ACTION
-);
-
 CREATE TABLE IF NOT EXISTS galleria.GALLERIA(
-
     IDGalleria galleria.id_object_dt  NOT NULL,
     NomeGalleria galleria.string  NOT NULL,
     Condivisione BOOLEAN DEFAULT FALSE,
@@ -74,8 +59,21 @@ CREATE TABLE IF NOT EXISTS galleria.GALLERIA(
         ON UPDATE CASCADE ON DELETE NO ACTION
 );
 
-CREATE TABLE IF NOT EXISTS galleria.COMPONE(
+CREATE TABLE IF NOT EXISTS galleria.VIDEO(
+    IDVideo galleria.id_object_dt NOT NULL,
+    TitoloVideo galleria.string NOT NULL,
+    Descrizione TEXT,
+    Galleria galleria.id_object_dt NOT NULL,
 
+    CONSTRAINT check_iniziale_idvideo CHECK(IDVideo ~ '^V'),
+
+    CONSTRAINT video_pk PRIMARY KEY (IDVideo),
+
+    CONSTRAINT galleria_fk FOREIGN KEY (Galleria) REFERENCES galleria.GALLERIA(IDGalleria) 
+        ON UPDATE CASCADE ON DELETE NO ACTION
+);
+
+CREATE TABLE IF NOT EXISTS galleria.COMPONE(
     IDVideo galleria.id_object_dt  NOT NULL,
     IDFoto galleria.id_object_dt  NOT NULL,
 
@@ -88,7 +86,6 @@ CREATE TABLE IF NOT EXISTS galleria.COMPONE(
 );
 
 CREATE TABLE IF NOT EXISTS galleria.CONTENUTA(
-
     IDGalleria galleria.id_object_dt  NOT NULL,
     IDFoto galleria.id_object_dt  NOT NULL,
 
@@ -101,7 +98,6 @@ CREATE TABLE IF NOT EXISTS galleria.CONTENUTA(
 );
 
 CREATE TABLE IF NOT EXISTS galleria.PARTECIPA(
-
     IDGalleria galleria.id_object_dt  NOT NULL,
     IDUtente galleria.id_user_dt  NOT NULL,
 
