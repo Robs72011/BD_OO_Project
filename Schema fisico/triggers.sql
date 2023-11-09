@@ -5,11 +5,6 @@ AS $$
 DECLARE 
     presenza INTEGER; --una variabile di tipo intero che conterra' 0, se il luogo non e' presente, e != 0 se lo e'.
 BEGIN
-    
-    IF NEW.Coordinate IS NULL
-        RETURN NEW;
-    END IF;
-
     SELECT COUNT(*) INTO presenza
     FROM galleria.LUOGO
     WHERE galleria.LUOGO.Coordinate = NEW.Coordinate;
