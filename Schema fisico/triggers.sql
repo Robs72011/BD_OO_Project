@@ -5,13 +5,18 @@ AS $$
 DECLARE 
     presenza INTEGER; --una variabile di tipo intero che conterra' 0, se il luogo non e' presente, e != 0 se lo e'.
 BEGIN
+    
+    IF NEW.Coordinate IS NULL
+        RETURN NEW;
+    END IF;
+
     SELECT COUNT(*) INTO presenza
-    FROM LUOGO
-    WHERE LUOGO.Coordinate = NEW.Coordinate;
+    FROM galleria.LUOGO
+    WHERE galleria.LUOGO.Coordinate = NEW.Coordinate;
     
     IF presenza = 0 THEN 
         IF NEW.Coordinate IS NOT NULL THEN
-            INSERT INTO LUOGO(coordinate) VALUES (NEW.Coordinate);
+            INSERT INTO galleria.LUOGO(coordinate) VALUES (NEW.Coordinate);
         END IF;
     ELSE
         RAISE EXCEPTION 'Non è possibile inserire le coordinate (%) dato che sono già presenti.', NEW.Coordinate;
@@ -239,7 +244,7 @@ BEFORE UPDATE ON galleria.FOTO
 FOR EACH ROW EXECUTE FUNCTION galleria.gestione_eliminazione_foto_fn();
 
 --------------------------------------------------------------------------------------------------------------------------
---CREARE TRIGGER PER ELIMINAZIONE DI UNA FOTO
+--CREARE TRIGGER PER ELIMINAZIONE DI UNA FOTO (attualmente e' stato fatto in forma di funzione: elimina_foto_gal_pers_fn(foto_da_eliminare IN CHAR))
 
 --------------------------------------------------------------------------------------------------------------------------
 --CREARE TRIGGER PER CONTROLLO DELL'OWNER DI UNA GALLERIA CONDIVISA PER CAMBIO DI OWNER
