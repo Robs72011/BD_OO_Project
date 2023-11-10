@@ -78,8 +78,12 @@ FOR EACH ROW EXECUTE FUNCTION galleria.check_valori_coordinate_fn();
 CREATE OR REPLACE FUNCTION galleria.crea_gall_personale_fn()
 RETURNS TRIGGER
 AS $$
-BEGIN    
-    INSERT INTO galleria.GALLERIA VALUES (galleria.genera_id_fn('G'), galleria.genera_nome_galleria_fn(NEW.Nome), FALSE, NEW.IDUtente);
+DECLARE
+    id_galleria CHAR(10);
+BEGIN
+    SELECT galleria.genera_id_fn('G') INTO id_galleria;
+    INSERT INTO galleria.GALLERIA VALUES (id_galleria, galleria.genera_nome_galleria_fn(NEW.Nome), FALSE, NEW.IDUtente);
+    INSERT INTO galleria.PARTECIPA VALUES (id_galleria, NEW.IDUtente);
     RETURN NEW;
 END;
 $$
@@ -249,3 +253,6 @@ FOR EACH ROW EXECUTE FUNCTION galleria.gestione_eliminazione_foto_fn();
 
 --------------------------------------------------------------------------------------------------------------------------
 --CREARE TRIGGER PER IL CONTROLLO DI ELIMINAZIONE DI FOTO/UTENTE
+
+--------------------------------------------------------------------------------------------------------------------------
+--CREARE TRIGGER PER IL CONTROLLO DENTRO galleria.GALLERIA CHE EFFETTIVAMENTE UN PIU' IDGALLERIA POSSONO AVERE UN UNICO PROPRIETARIO, MA SOLO UNO, E NON PIU' DI UNO, DEGLI IDGALLERIA AVRA' LA CONDIVISIONE A FALSE, IN QUANTO E' LA GALLERIA PRIVATA.
