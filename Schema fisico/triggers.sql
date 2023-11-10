@@ -166,7 +166,7 @@ BEGIN
     --se la foto e' 'invisibile' e la galleria condivisa, impedisco l'inserimento
     IF check_visibilita = FALSE AND check_gallery_type = TRUE THEN
 
-        RAISE EXCEPTION 'La foto non può essere inserita in una galleria condivisa in quanto è stata resa invisibile';
+        RAISE EXCEPTION 'La foto non può essere inserita in una galleria condivisa dato che è stata resa invisibile';
 
     END IF;
 
@@ -181,7 +181,7 @@ FOR EACH ROW EXECUTE FUNCTION galleria.stop_inserimento_foto_privata_fn();
 
 --------------------------------------------------------------------------------------------------------------------------
 --trigger che gestisce una foto appena eliminata da una galleria personale, se fa parte di un video viene aggiornata la data di eliminazione alla data attuale, altrimenti la tupla viene eliminata
-CREATE OR REPLACE FUNCTION galleria.gestione_eliminazione_foto_fn()
+CREATE OR REPLACE FUNCTION galleria.gestione_eliminazione_foto_in_video_fn()
 RETURNS TRIGGER
 AS $$
 DECLARE
@@ -194,7 +194,7 @@ BEGIN
     FROM galleria.GALLERIA
     WHERE IDGalleria = OLD.IDGalleria;
 
-    IF check_tipo_galleria = TRUE THEN
+    IF check_tipo_galleria = TRUE THEN --se e' true e' una galleria condivisa
         RETURN NULL;
     END IF;
 
@@ -221,11 +221,11 @@ LANGUAGE PLPGSQL;
 
 CREATE OR REPLACE TRIGGER gestione_eliminazione_foto_in_video_tr
 AFTER DELETE ON galleria.CONTENUTA
-FOR EACH ROW EXECUTE FUNCTION galleria.gestione_eliminazione_foto_fn();
+FOR EACH ROW EXECUTE FUNCTION galleria.gestione_eliminazione_foto_in_video_fn();
 
 --------------------------------------------------------------------------------------------------------------------------
---CREARE TRIGGER PER IMPEDIRE A IN VIDEO DI PASSARE DA TRUE A FALSE
-CREATE OR REPLACE FUNCTION galleria.gestione_eliminazione_foto_fn()
+--trigger che non permette ad InVideo di passare da true a false
+CREATE OR REPLACE FUNCTION galleria.stop_update_invideo_fn()
 RETURNS TRIGGER
 AS $$
 BEGIN
@@ -238,9 +238,9 @@ END;
 $$
 LANGUAGE PLPGSQL;
 
-CREATE OR REPLACE TRIGGER gestione_eliminazione_foto_in_video_tr
+CREATE OR REPLACE TRIGGER stop_update_invideo_tr
 BEFORE UPDATE ON galleria.FOTO
-FOR EACH ROW EXECUTE FUNCTION galleria.gestione_eliminazione_foto_fn();
+FOR EACH ROW EXECUTE FUNCTION galleria.stop_update_invideo_fn();
 
 --------------------------------------------------------------------------------------------------------------------------
 --CREARE TRIGGER PER ELIMINAZIONE DI UNA FOTO (attualmente e' stato fatto in forma di funzione: elimina_foto_gal_pers_fn(foto_da_eliminare IN CHAR))
