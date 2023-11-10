@@ -1,11 +1,10 @@
 --Eliminazione di una foto da una galleria personale, DA RIVEDERE
 --con CONDIVISIONE = FALSE, prendo tutte le gallerie private
 --con PROPRIETARIO = AUTORE, vado a prendere tutte le foto presente nella galleria personale di quel utente
-CREATE OR REPLACE FUNCTION elimina_foto_gal_pers_fn(foto_da_eliminare IN CHAR)
+CREATE OR REPLACE FUNCTION galleria.elimina_foto_gal_pers_fn(foto_da_eliminare IN CHAR)
 RETURNS TEXT
 AS $$
 BEGIN
-
 	--Vado ad eliminare la foto da "CONTENUTA"
 	DELETE FROM galleria.CONTENUTA c
 	WHERE EXISTS(
