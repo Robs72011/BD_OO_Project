@@ -57,8 +57,8 @@ DECLARE
     longitudine float;
     latitudine float;
 BEGIN
-    longitudine := SUBSTRING(check_coordinate FROM 2 FOR 5 )::float;
-    latitudine := SUBSTRING(check_coordinate FROM 9 FOR 5 )::float;
+    longitudine := SUBSTRING(check_coordinate FROM 2 FOR 5)::float;
+    latitudine := SUBSTRING(check_coordinate FROM 9 FOR 6)::float;--controlla il 5 
     
     IF longitudine > 90.00 OR latitudine > 180.00 THEN
         RAISE EXCEPTION 'Il valore di logintudine, oppure di latitudine, vanno oltre l''insieme di valori ammessi.';
