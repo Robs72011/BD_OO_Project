@@ -124,7 +124,7 @@ BEGIN
     
     IF NEW.Visibilita = FALSE THEN
 
-        DELETE FROM galleria.CONTENUTA C
+        DELETE FROM galleria.CONTENUTA c
         WHERE EXISTS(
             SELECT 1
             FROM galleria.GALLERIA g
@@ -133,7 +133,7 @@ BEGIN
 
     END IF;
 
-    RETURN NULL;
+    RETURN NEW;
 END;
 $$
 LANGUAGE PLPGSQL;
@@ -283,11 +283,52 @@ AFTER INSERT ON galleria.GALLERIA
 FOR EACH ROW EXECUTE FUNCTION galleria.insert_partecipa_proprietario_gall_fn();
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--trigger che evita l'eliminazione dell'utente admin
+CREATE OR REPLACE FUNCTION galleria.stop_eliminazione_admin_fn()
+RETURNS TRIGGER
+AS $$
+BEGIN
+    IF OLD.IsAdmin = TRUE THEN
+        RAISE EXCEPTION 'L''admin non può essere eliminato.';
+    ELSE
+        RETURN NEW;
+    END IF;
+END;
+$$
+LANGUAGE PLPGSQL;
+
+CREATE OR REPLACE TRIGGER stop_eliminazione_admin_tr
+BEFORE DELETE ON galleria.UTENTE
+FOR EACH ROW EXECUTE FUNCTION galleria.stop_eliminazione_admin_tr();
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--update che impedisce ad un utente di diventare admin e il contrario.
+CREATE OR REPLACE FUNCTION galleria.stop_update_isadmin_fn()
+RETURNS TRIGGER
+AS $$
+BEGIN
+    IF (OLD.IsAdmin = TRUE AND NEW.IsAdmin = FALSE) THEN
+        RAISE EXCEPTION 'Un admin non può diventare un utente';
+    ELSIF (OLD.IsAdmin = FALSE AND NEW.IsAdmin = TRUE) THEN 
+        RAISE EXCEPTION 'Un utente non può diventare un admin';
+    ELSE
+        RETURN NEW;
+    END IF;
+END;
+$$
+LANGUAGE PLPGSQL;
+
+CREATE OR REPLACE TRIGGER stop_update_isadmin_tr
+BEFORE UPDATE ON galleria.UTENTE
+FOR EACH ROW EXECUTE FUNCTION galleria.stop_update_isadmin_fn();
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --CREARE TRIGGER PER ELIMINAZIONE DI UNA FOTO (attualmente e' stato fatto in forma di funzione: elimina_foto_gal_pers_fn(foto_da_eliminare IN CHAR))
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --CREARE TRIGGER PER CONTROLLO DELL'OWNER DI UNA GALLERIA CONDIVISA PER CAMBIO DI OWNER
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
---CREARE TRIGGER L'ELIMINAZIONE DI UTENTE DA PARTE DI UN ADMIN CON TUTTE LE DINAMICHE RELATIVE ALLA ELIMINAZIONE DI FOTO
+--CREARE TRIGGER L'ELIMINAZIONE DI UTENTE DA PARTE DI UN ADMIN CON TUTTE LE DINAMICHE RELATIVE ALLA ELIMINAZIONE DI UNA FOTO
 
