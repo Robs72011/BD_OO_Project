@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS galleria.FOTO(
 
 CREATE TABLE IF NOT EXISTS galleria.SOGGETTO(
     Foto galleria.id_object_dt NOT NULL,
-    NomeSoggetto galleria.string NOT NULL UNIQUE,
+    NomeSoggetto galleria.string NOT NULL,
     Categoria galleria.string NOT NULL,
 
     CONSTRAINT soggetto_pk PRIMARY KEY (Foto, NomeSoggetto),
