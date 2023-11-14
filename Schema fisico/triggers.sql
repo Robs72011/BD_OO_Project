@@ -13,8 +13,6 @@ BEGIN
         IF NEW.Coordinate IS NOT NULL THEN
             INSERT INTO galleria.LUOGO(coordinate) VALUES (NEW.Coordinate);
         END IF;
-    ELSE
-        RAISE EXCEPTION 'Non è possibile inserire le coordinate (%) dato che sono già presenti.', NEW.Coordinate;
     END IF;
     
     RETURN NEW;
@@ -324,11 +322,58 @@ BEFORE UPDATE ON galleria.UTENTE
 FOR EACH ROW EXECUTE FUNCTION galleria.stop_update_isadmin_fn();
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--trigger dedito all'inserimento del soggetto e la giusta gestione di utenti della base di dati come soggetti di una foto
+CREATE OR REPLACE FUNCTION galleria.controllo_soggetto_fn()
+RETURNS TRIGGER
+AS $$
+DECLARE
+    buff galleria.string;
+    buff_2 galleria.string;
+    controllo_lunghezza INT;
+    presenza INT;
+    newtext galleria.id_user_dt;
+BEGIN
+
+    IF SUBSTRING(NEW.NomeSoggetto FROM 1 FOR 1) = '@' THEN 
+        buff_2 := SUBSTRING(NEW.NomeSoggetto FROM 2);
+        buff := UPPER(buff_2);
+        controllo_lunghezza := LENGTH(buff);
+        IF controllo_lunghezza = 5 THEN 
+            newtext := buff::galleria.id_user_dt;
+            SELECT COUNT(*) INTO presenza
+            FROM galleria.UTENTE
+            WHERE galleria.UTENTE.IDUtente = newtext;
+
+            IF presenza = 0 THEN 
+                RAISE EXCEPTION 'Non pui inserire questo utente in quanto non esiste';
+            ELSE 
+                NEW.NomeSoggetto := buff; 
+            END IF;
+
+        ELSE 
+
+            RAISE EXCEPTION 'Un id utente ha precisamente 5 caratteri';
+
+        END IF;
+    ELSE 
+        buff := LOWER(NEW.NomeSoggetto);
+        NEW.NomeSoggetto := buff; 
+    END IF;
+
+    RETURN NEW;
+END;
+$$
+LANGUAGE PLPGSQL;
+
+CREATE OR REPLACE TRIGGER controllo_soggetto_tr
+BEFORE INSERT ON galleria.SOGGETTO
+FOR EACH ROW EXECUTE FUNCTION galleria.controllo_soggetto_fn();
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --CREARE TRIGGER PER ELIMINAZIONE DI UNA FOTO (attualmente e' stato fatto in forma di funzione: elimina_foto_gal_pers_fn(foto_da_eliminare IN CHAR))
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --CREARE TRIGGER PER CONTROLLO DELL'OWNER DI UNA GALLERIA CONDIVISA PER CAMBIO DI OWNER
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
---CREARE TRIGGER L'ELIMINAZIONE DI UTENTE DA PARTE DI UN ADMIN CON TUTTE LE DINAMICHE RELATIVE ALLA ELIMINAZIONE DI UNA FOTO
-
+--CREARE TRIGGER PER L'ELIMINAZIONE DI UTENTE DA PARTE DI UN ADMIN CON TUTTE LE DINAMICHE RELATIVE ALLA ELIMINAZIONE DI UNA FOTO
