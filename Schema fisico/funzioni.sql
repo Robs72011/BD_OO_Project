@@ -19,6 +19,10 @@ BEGIN
 	SET DataEliminazione = current_date
 	WHERE IDFOTO = foto_da_eliminare;
 
+	UPDATE galleria.FOTO 
+	SET Autore = 'ADMN1' --modificare con l'effettivo id dell'admin
+	WHERE IDFOTO = foto_da_eliminare;
+
 	RETURN 'La foto è stata eliminata correttamente.';
 END;
 $$
@@ -48,6 +52,21 @@ DECLARE
 BEGIN
 	nome_galleria := 'Galleria di ' || nome_utente;
     RETURN nome_galleria;
+END;
+$$
+LANGUAGE PLPGSQL;
+
+--Recupero di tutte le foto dato un determinato soggetto.
+CREATE OR REPLACE FUNCTION galleria.recupero_soggetti_fn(cercare IN VARCHAR(50))
+RETURNS TABLE(fotografia galleria.id_object_dt)
+AS $$
+BEGIN
+
+	RETURN QUERY 
+	SELECT foto
+	FROM galleria.SOGGETTO S
+	WHERE S.NomeSoggetto = cercare;
+    
 END;
 $$
 LANGUAGE PLPGSQL;
