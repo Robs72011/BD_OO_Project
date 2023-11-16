@@ -177,50 +177,6 @@ BEFORE INSERT ON galleria.CONTENUTA
 FOR EACH ROW EXECUTE FUNCTION galleria.stop_inserimento_foto_privata_fn();
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
---trigger che gestisce una foto appena eliminata da una galleria personale, se fa parte di un video viene aggiornata la data di eliminazione alla data attuale, altrimenti la tupla viene eliminata
-CREATE OR REPLACE FUNCTION galleria.gestione_eliminazione_foto_in_video_fn()
-RETURNS TRIGGER
-AS $$
-DECLARE
-    parte_di_un_video BOOLEAN;
-    check_tipo_galleria BOOLEAN;
-BEGIN
-    
-    --controllo che la galleria sia privata per non intrecciare questo trigger con quello della privatizzazione
-    SELECT Condivisione INTO check_tipo_galleria
-    FROM galleria.GALLERIA
-    WHERE IDGalleria = OLD.IDGalleria;
-
-    IF check_tipo_galleria = TRUE THEN --se e' true e' una galleria condivisa
-        RETURN NULL;
-    END IF;
-
-    SELECT InVideo INTO parte_di_un_video
-    FROM galleria.FOTO
-    WHERE IDFoto = OLD.IDFoto;
-    
-    IF parte_di_un_video = TRUE THEN 
-        
-        RAISE NOTICE 'Dato che le foto che sono, o sono state, parte di un video vengono tracciate, viene aggiornata la data di eliminazione.';
-        
-        RETURN NEW;
-    ELSE
-        
-        DELETE FROM galleria.FOTO WHERE IDFoto = OLD.IDFoto;
-        
-    END IF;
-    
-    RETURN OLD;
-    
-END;
-$$
-LANGUAGE PLPGSQL;
-
-CREATE OR REPLACE TRIGGER gestione_eliminazione_foto_in_video_tr
-AFTER DELETE ON galleria.CONTENUTA
-FOR EACH ROW EXECUTE FUNCTION galleria.gestione_eliminazione_foto_in_video_fn();
-
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --trigger che non permette ad InVideo di passare da true a false
 CREATE OR REPLACE FUNCTION galleria.stop_update_invideo_fn()
 RETURNS TRIGGER
@@ -376,4 +332,24 @@ FOR EACH ROW EXECUTE FUNCTION galleria.controllo_soggetto_fn();
 --CREARE TRIGGER PER CONTROLLO DELL'OWNER DI UNA GALLERIA CONDIVISA PER CAMBIO DI OWNER
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--CREARE TRIGGER CHE CONTROLLA CHE SE UNA FOTO E' PRESENTE IN UNA GALLERIA PERSONALE E' PRESENTE ANCHE IL SUO AUTORE COME PARTECIPANTE ALLA GALLERIA
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--CREARE TRIGGER CHE GESTISCE ELIMNAZIONE FOTO
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --CREARE TRIGGER PER L'ELIMINAZIONE DI UTENTE DA PARTE DI UN ADMIN CON TUTTE LE DINAMICHE RELATIVE ALLA ELIMINAZIONE DI UNA FOTO
+CREATE OR REPLACE FUNCTION galleria.eliminazione_utente_admin_fn()
+RETURNS TRIGGER
+AS $$
+BEGIN
+    
+    
+
+END;
+$$
+LANGUAGE PLPGSQL;
+
+CREATE OR REPLACE TRIGGER eliminazione_utente_admin_tr
+BEFORE INSERT ON galleria.SOGGETTO
+FOR EACH ROW EXECUTE FUNCTION galleria.eliminazione_utente_admin_fn();
