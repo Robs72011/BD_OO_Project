@@ -70,3 +70,18 @@ BEGIN
 END;
 $$
 LANGUAGE PLPGSQL;
+
+--Recupero di tutte le foto data una coppia di coordinate
+CREATE OR REPLACE FUNCTION galleria.recupero_foto_luoghi_fn(cercare galleria.coo_dt)
+RETURNS TABLE(fotografia galleria.id_object_dt)
+AS $$
+BEGIN
+
+ RETURN QUERY 
+ SELECT IDFoto
+ FROM galleria.FOTO F
+ WHERE F.coordinate = cercare;
+    
+END;
+$$
+LANGUAGE PLPGSQL;
