@@ -353,3 +353,16 @@ LANGUAGE PLPGSQL;
 CREATE OR REPLACE TRIGGER eliminazione_utente_admin_tr
 BEFORE INSERT ON galleria.SOGGETTO
 FOR EACH ROW EXECUTE FUNCTION galleria.eliminazione_utente_admin_fn();
+
+
+
+
+delete from galleria.foto where galleria.foto.idfoto = ( 
+select c.idfoto
+from GALLERIA.contenuta c join galleria.galleria g on c.idgalleria = g.idgalleria
+where g.proprietario = 'AB123' AND g.condivisione = false 
+except
+select c.idfoto
+from GALLERIA.contenuta c join galleria.galleria g on c.idgalleria = g.idgalleria
+where g.proprietario = 'AB123' AND g.condivisione = true)
+
