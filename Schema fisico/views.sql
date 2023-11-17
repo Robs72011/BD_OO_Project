@@ -1,4 +1,4 @@
-CREATE VIEW top_luoghi_w AS 
+CREATE VIEW galleria.top_luoghi_w AS 
 SELECT COUNT(*), F.Coordinate
 FROM galleria.FOTO F JOIN galleria.LUOGO L ON F.Coordinate = L.Coordinate
 GROUP BY F.Coordinate
