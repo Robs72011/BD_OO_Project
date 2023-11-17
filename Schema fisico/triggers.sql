@@ -253,7 +253,7 @@ LANGUAGE PLPGSQL;
 
 CREATE OR REPLACE TRIGGER stop_eliminazione_admin_tr
 BEFORE DELETE ON galleria.UTENTE
-FOR EACH ROW EXECUTE FUNCTION galleria.stop_eliminazione_admin_tr();
+FOR EACH ROW EXECUTE FUNCTION galleria.stop_eliminazione_admin_fn();
 
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
