@@ -326,9 +326,6 @@ BEFORE INSERT ON galleria.SOGGETTO
 FOR EACH ROW EXECUTE FUNCTION galleria.controllo_soggetto_fn();
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
---CREARE TRIGGER PER ELIMINAZIONE DI UNA FOTO (attualmente e' stato fatto in forma di funzione: elimina_foto_gal_pers_fn(foto_da_eliminare IN CHAR))
-
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --CREARE TRIGGER PER CONTROLLO DELL'OWNER DI UNA GALLERIA CONDIVISA PER CAMBIO DI OWNER
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -338,31 +335,104 @@ FOR EACH ROW EXECUTE FUNCTION galleria.controllo_soggetto_fn();
 --CREARE TRIGGER CHE GESTISCE ELIMNAZIONE FOTO
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
---CREARE TRIGGER PER L'ELIMINAZIONE DI UTENTE DA PARTE DI UN ADMIN CON TUTTE LE DINAMICHE RELATIVE ALLA ELIMINAZIONE DI UNA FOTO
-CREATE OR REPLACE FUNCTION galleria.eliminazione_utente_admin_fn()
+--CREARE TRIGGER CHE ALL'INSERIMENTO DI UNA FOTO IN UNA GALLERIA CONDIVISA, CONTROLLA CHE L'AUTORE DELLA FOTO SIA UN PARTECIPANTE ALLA GALLERIA. 
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--trigger che gestisce le foto di un utente eliminato da un admin
+CREATE OR REPLACE FUNCTION eliminazione_utente_admin_fn()
 RETURNS TRIGGER
 AS $$
 BEGIN
-    
-    
+    UPDATE galleria.FOTO 
+    SET autore = 'BUFF0'
+    WHERE idfoto IN (
+    SELECT foto 
+    FROM galleria.SOGGETTO
+    WHERE foto IN (
 
+        SELECT c.idfoto
+        FROM galleria.CONTENUTA c JOIN galleria.GALLERIA g ON c.idgalleria = g.idgalleria 
+        WHERE condivisione = true AND g.idgalleria IN(
+            SELECT g.idgalleria
+            FROM galleria.PARTECIPA p JOIN galleria.GALLERIA g on p.idgalleria = g.idgalleria
+            WHERE idutente = 'AB123' 
+        ) 
+    )AND nomesoggetto <> 'AB123' AND nomesoggetto IN (
+            SELECT p.idutente
+            FROM galleria.PARTECIPA p JOIN galleria.SOGGETTO s on p.idutente = s.nomesoggetto
+            WHERE p.idgalleria IN(
+                SELECT idgalleria
+                FROM galleria.PARTECIPA 
+                WHERE idutente = 'AB123'
+            )
+        )
+    );
+
+    UPDATE galleria.foto SET dataeliminazione = current_date WHERE autore = 'AB123';
+
+    DELETE FROM galleria.foto WHERE autore = 'AB123' AND invideo = FALSE;
+
+    --passo da galleria privata a quella del cestino
+    UPDATE galleria.contenuta SET idgalleria = 'GIKBZ20E1R'  WHERE idgalleria IN (
+        SELECT idgalleria
+        FROM galleria.galleria
+        WHERE proprietario = 'AB123' AND condivisione = FALSE
+    );
+
+    --
+    DELETE FROM galleria.CONTENUTA WHERE idgalleria IN (
+        SELECT idgalleria
+        FROM galleria.GALLERIA 
+        WHERE condivisione = true
+    ) AND idfoto IN (
+        SELECT idfoto
+        FROM galleria.FOTO
+        WHERE autore = 'AB123'
+    );
+
+    UPDATE galleria.FOTO SET autore = '0BIN0' WHERE autore = 'AB123';
+END;
+$$ LANGUAGE PLPGSQL;
+
+CREATE OR REPLACE TRIGGER eliminazione_utente_admin_tr
+BEFORE DELETE ON galleria.UTENTE
+FOR EACH ROW EXECUTE FUNCTION eliminazione_utente_admin_fn()
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--trigger che controlla che all'inserimento di una foto in una galleria condivisa, l'autore della foto partecipi alla galleria condivisa
+CREATE OR REPLACE FUNCTION galleria.check_autore_partecipa_fn()
+RETURNS TRIGGER
+AS $$
+DECLARE
+    gallery_type BOOLEAN;
+    autore_new_foto galleria.id_user_dt;
+BEGIN
+    SELECT Condivisione INTO gallery_type
+    FROM galleria.GALLERIA
+    WHERE idgalleria = NEW.idgalleria;
+
+
+    IF gallery_type = FALSE THEN
+        RETURN NEW;
+    ELSE
+        SELECT autore INTO autore_new_foto
+        FROM galleria.FOTO
+        WHERE idfoto = NEW.idfoto;
+
+        IF (SELECT COUNT(autore_new_foto)
+           FROM galleria.PARTECIPA
+           WHERE idgalleria = NEW.idgalleria) > 0 THEN
+            RETURN NEW;
+        ELSE
+            RAISE EXCEPTION 'L''autore della foto % non partecipa alla galleria condivisa, quindi non puo''inserire foto.', NEW.idfoto;
+        END IF;
+
+
+    END IF;
 END;
 $$
 LANGUAGE PLPGSQL;
 
-CREATE OR REPLACE TRIGGER eliminazione_utente_admin_tr
-BEFORE INSERT ON galleria.SOGGETTO
-FOR EACH ROW EXECUTE FUNCTION galleria.eliminazione_utente_admin_fn();
-
-
-
-
-delete from galleria.foto where galleria.foto.idfoto = ( 
-select c.idfoto
-from GALLERIA.contenuta c join galleria.galleria g on c.idgalleria = g.idgalleria
-where g.proprietario = 'AB123' AND g.condivisione = false 
-except
-select c.idfoto
-from GALLERIA.contenuta c join galleria.galleria g on c.idgalleria = g.idgalleria
-where g.proprietario = 'AB123' AND g.condivisione = true)
-
+CREATE OR REPLACE TRIGGER check_autore_partecipa_tr
+BEFORE INSERT ON galleria.CONTENUTA
+FOR EACH ROW EXECUTE FUNCTION galleria.check_autore_partecipa_fn();
