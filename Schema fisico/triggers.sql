@@ -453,6 +453,6 @@ BEGIN
 END;
 $$ LANGUAGE PLPGSQL;
 
-CREATE OR REPLACE TRIGGER stop_ins_gall_priv_altro_prop_fn
+CREATE OR REPLACE TRIGGER stop_ins_gall_priv_altro_prop_tr
 BEFORE INSERT ON galleria.CONTENUTA
 FOR EACH ROW EXECUTE FUNCTION stop_ins_gall_priv_altro_prop_fn();
