@@ -1,484 +1,484 @@
-('F1A2B3C4D5', '@9Y4FD', 'ritratto di utente')
-('F1A2B3C4D5', '@I2U9D', 'ritratto di utente')
-('F1A2B3C4D5', 'stadio', 'infrastruttura')
-('F5E6G7H8I9', 'albero', 'vegetale')
-('F5E6G7H8I9', 'gara di atletica', 'evento')
-('F5E6G7H8I9', 'auto', 'veicolo')
-('F9J0K1L2M3', '@3I6RB', 'ritratto di utente')
-('F9J0K1L2M3', 'concerto', 'evento')
-('F9J0K1L2M3', '@2V0HC', 'ritratto di utente')
-('F9J0K1L2M3', 'cinema', 'intrattenimento')
-('F9J0K1L2M3', '@S7X4L', 'ritratto di utente')
-('F3N4O5P6Q7', 'albero', 'vegetale')
-('F3N4O5P6Q7', '@4B8FO', 'ritratto di utente')
-('F3N4O5P6Q7', '@Q2U9P', 'ritratto di utente')
-('F7R8S9T0U1', '@6L1HS', 'ritratto di utente')
-('F7R8S9T0U1', 'auto', 'veicolo')
-('F1V2W3X4Y5', 'treno', 'veicolo')
-('F1V2W3X4Y5', 'centro commericale', 'intrattenimento')
-('F1V2W3X4Y5', 'cane', 'animale')
-('F1V2W3X4Y5', '@Q0R8X', 'ritratto di utente')
-('F5Z6A7B8C9', '@1Y9VB', 'ritratto di utente')
-('F9D1E2F3G4', 'albero', 'vegetale')
-('F9D1E2F3G4', '@N8Z3G', 'ritratto di utente')
-('F4H5I6J7K8', '@9Y4FD', 'ritratto di utente')
-('F4H5I6J7K8', '@O4A9Q', 'ritratto di utente')
-('F4H5I6J7K8', '@N8Z3G', 'ritratto di utente')
-('F4H5I6J7K8', 'cane', 'animale')
-('F4H5I6J7K8', '@0X5IJ', 'ritratto di utente')
-('F8L9M0N1O2', 'scuola', 'educazione')
-('F8L9M0N1O2', '@N0T8M', 'ritratto di utente')
-('F2P3Q4R5S6', 'bus', 'veicolo')
-('F6T7U8V9W0', '@8W6HN', 'ritratto di utente')
-('F6T7U8V9W0', '@2V0HC', 'ritratto di utente')
-('F6T7U8V9W0', '@C9K1R', 'ritratto di utente')
-('F6T7U8V9W0', '@Q2U9P', 'ritratto di utente')
-('FXY21ZABC3', 'gatto', 'animale')
-('FXY21ZABC3', '@I2U9D', 'ritratto di utente')
-('FXY21ZABC3', 'paesaggio', 'natura')
-('FXY21ZABC3', '@R4V9E', 'ritratto di utente')
-('FDEFGHIJKL', '@F6R1Y', 'ritratto di utente')
-('FDEFGHIJKL', '@Z5C1Q', 'ritratto di utente')
-('FDEFGHIJKL', 'gara di atletica', 'evento')
-('FDEFGHIJKL', 'cane', 'animale')
-('FDEFGHIJKL', 'auto', 'veicolo')
-('FMNOPQRSTU', '@P9B4G', 'ritratto di utente')
-('FMNOPQRSTU', '@D4U8R', 'ritratto di utente')
-('FUVWXYZ123', 'auto', 'veicolo')
-('FUVWXYZ123', 'ritratto', 'foto')
-('FUVWXYZ123', 'stadio', 'infrastruttura')
-('F456789012', '@Q0R8X', 'ritratto di utente')
-('F456789012', '@8W6HN', 'ritratto di utente')
-('F456789012', 'edificio', 'infrastuttura')
-('F456789012', '@7F4ZP', 'ritratto di utente')
-('F456789012', '@X1L3E', 'ritratto di utente')
-('F345678901', 'paesaggio', 'natura')
-('F678901234', 'scuola', 'educazione')
-('F678901234', '@4B8FO', 'ritratto di utente')
-('F678901234', '@5H7KT', 'ritratto di utente')
-('F678901234', '@8W6HN', 'ritratto di utente')
-('F678901234', 'concerto', 'evento')
-('F901234567', '@C9K1R', 'ritratto di utente')
-('F901234567', 'università', 'educazione')
-('F901234567', '@U3L6W', 'ritratto di utente')
-('F901234567', '@7F4ZP', 'ritratto di utente')
-('F234567890', '@Y5D1H', 'ritratto di utente')
-('F234567890', '@F6R1Y', 'ritratto di utente')
-('F234567890', '@Z1C3L', 'ritratto di utente')
-('F234567890', '@9Y4FD', 'ritratto di utente')
-('F678901ABC', 'gatto', 'animale')
-('F678901ABC', '@E5I7K', 'ritratto di utente')
-('F678901ABC', '@A6Q2M', 'ritratto di utente')
-('F678901ABC', '@A6Q2M', 'ritratto di utente')
-('F678901ABC', '@E5I7K', 'ritratto di utente')
-('F234567DEF', 'cane', 'animale')
-('F234567DEF', 'centro commericale', 'intrattenimento')
-('F234567DEF', 'casa', 'infrastuttura')
-('F567890GHI', 'cane', 'animale')
-('F567890GHI', 'auto', 'veicolo')
-('F901234566', 'sconosciuto', 'sconosciuto')
-('F23456789A', 'ritratto', 'foto')
-('F23456789A', '@E5I7K', 'ritratto di utente')
-('F56789CDEF', '@O4A9Q', 'ritratto di utente')
-('F56789CDEF', 'concerto', 'evento')
-('F56789CDEF', 'albero', 'vegetale')
-('F89GHIJ0KL', 'spettacolo teatrale', 'evento')
-('F89GHIJ0KL', '@X1L3E', 'ritratto di utente')
-('F234KLMNOP', '@7S4NY', 'ritratto di utente')
-('F234KLMNOP', '@3I6RB', 'ritratto di utente')
-('FQRSTU1234', 'moto', 'veicolo')
-('FQRSTU1234', '@U3L6W', 'ritratto di utente')
-('FQRSTU1234', '@7F4ZP', 'ritratto di utente')
-('FQRSTU1234', 'strada', 'infrastuttura')
-('FU1234VWXY', 'pianta', 'vegetale')
-('FU1234VWXY', '@Z1C3L', 'ritratto di utente')
-('FCD2345EFG', 'pianta', 'vegetale')
-('FCD2345EFG', '@7F4ZP', 'ritratto di utente')
-('FCD2345EFG', 'dispositivo', 'elettronica')
-('FCD2345EFG', '@6L1HS', 'ritratto di utente')
-('FIJKLM6789', '@I2U9D', 'ritratto di utente')
-('FIJKLM6789', 'casa', 'infrastuttura')
-('FIJKLM6789', 'università', 'educazione')
-('FPQRSTUWXY', 'moto', 'veicolo')
-('FPQRSTUWXY', 'gara di atletica', 'evento')
-('FXY123456H', '@1Y9VB', 'ritratto di utente')
-('FXY123456H', 'albero', 'vegetale')
-('FU1234567P', 'foto di gruppo', 'foto')
-('FU1234567P', '@X1L3E', 'ritratto di utente')
-('FU1234567P', '@V0M5P', 'ritratto di utente')
-('FU1234567P', 'dispositivo', 'elettronica')
-('FCD234567L', '@J2O8U', 'ritratto di utente')
-('FCD234567L', '@4B8FO', 'ritratto di utente')
-('FCD234567L', '@4B8FO', 'ritratto di utente')
-('FCD234567L', 'stadio', 'infrastruttura')
-('FIJKLM901R', 'strada', 'infrastuttura')
-('FPQRSTU325', '@U3L6W', 'ritratto di utente')
-('FPQRSTU325', '@3T9XK', 'ritratto di utente')
-('FPQRSTU325', 'gatto', 'animale')
-('FXY1234561', '@H8P1W', 'ritratto di utente')
-('FXY1234561', '@H9J3F', 'ritratto di utente')
-('FXY1234561', 'edificio', 'infrastuttura')
-('FU1234567N', 'selfie', 'foto')
-('FU1234567N', 'negozio', 'infrastuttura')
-('FU1234567N', '@V0M5P', 'ritratto di utente')
-('FU1234567N', 'auto', 'veicolo')
-('FCD234567S', '@4B8FO', 'ritratto di utente')
-('FCD234567S', 'bus', 'veicolo')
-('FIJKLM901W', 'scuola', 'educazione')
-('FIJKLM901W', 'negozio', 'infrastuttura')
-('FIJKLM901W', '@8W6HN', 'ritratto di utente')
-('FIJKLM901W', 'discoteca', 'evento')
-('FPQRSTU344', 'foto di gruppo', 'foto')
-('FPQRSTU344', 'discoteca', 'evento')
-('FPQRSTU344', '@X2P7G', 'ritratto di utente')
-('FPQRSTU344', 'cinema', 'intrattenimento')
-('FXY123456K', '@Y7A6Z', 'ritratto di utente')
-('FXY123456K', '@Q2U9P', 'ritratto di utente')
-('FXY123456K', '@X2P7G', 'ritratto di utente')
-('FXY123456K', 'foto di gruppo', 'foto')
-('FU1234567B', 'università', 'educazione')
-('FCD234567A', 'casa', 'infrastuttura')
-('FCD234567A', '@Z1C3L', 'ritratto di utente')
-('FCD234567A', '@2D9C1', 'ritratto di utente')
-('FIJKLM9018', 'scuola', 'educazione')
-('FIJKLM9018', 'albero', 'vegetale')
-('FIJKLM9018', '@C9K1R', 'ritratto di utente')
-('FIJKLM9018', 'università', 'educazione')
-('FPQRSTU34D', '@Z5C1Q', 'ritratto di utente')
-('FPQRSTU34D', '@8A3XQ', 'ritratto di utente')
-('FPQRSTU34D', 'dispositivo', 'elettronica')
-('FXY1234563', 'centro commericale', 'intrattenimento')
-('FXY1234563', 'ritratto', 'foto')
-('FXY1234563', 'casa', 'infrastuttura')
-('FU123U567Y', 'università', 'educazione')
-('FU123U567Y', '@4B8FO', 'ritratto di utente')
-('FU123U567Y', 'bus', 'veicolo')
-('FU123U567Y', '@1A6ZF', 'ritratto di utente')
-('FCD23O5678', '@Y5D1H', 'ritratto di utente')
-('FCD23O5678', 'discoteca', 'evento')
-('FIJKLM901O', 'centro commericale', 'intrattenimento')
-('FPQRSTU345', 'gara di atletica', 'evento')
-('FPQRSTU345', '@Z5C1Q', 'ritratto di utente')
-('FXY1234567', '@1Y9VB', 'ritratto di utente')
-('FXY1234567', 'gara di atletica', 'evento')
-('FU1234567Y', '@L7O2W', 'ritratto di utente')
-('FCD2345678', '@H8P1W', 'ritratto di utente')
-('FCD2345678', '@5H7KT', 'ritratto di utente')
-('FCD2345678', 'concerto', 'evento')
-('FIJKLM9012', '@P9B4G', 'ritratto di utente')
-('FIJKLM9012', 'discoteca', 'evento')
-('FIJKLM9012', 'bus', 'veicolo')
-('F1B2C3D4E9', 'scuola', 'educazione')
-('F1B2C3D4E9', 'albero', 'vegetale')
-('F1B2C3D4E9', 'cane', 'animale')
-('F3L9M1N2O2', '@8A3XQ', 'ritratto di utente')
-('F3L9M1N2O2', 'pianta', 'vegetale')
-('F3L9M1N2O2', 'selfie', 'foto')
-('F3L9M1N2O2', '@M3N9Q', 'ritratto di utente')
-('F4U8R5J6KE', 'sconosciuto', 'sconosciuto')
-('F5I7K9G2FP', 'gara di atletica', 'evento')
-('F5I7K9G2FP', '@X2P7G', 'ritratto di utente')
-('F9B4G1A6Z0', '@B0R5J', 'ritratto di utente')
-('F9B4G1A6Z0', '@Y7A6Z', 'ritratto di utente')
-('F9B4G1A6Z0', '@V0M5P', 'ritratto di utente')
-('F9B4G1A6Z0', 'treno', 'veicolo')
-('F0R8X6JOKS', '@Y7A6Z', 'ritratto di utente')
-('FL1HSYW5YK', 'cane', 'animale')
-('FL1HSYW5YK', '@T6G2N', 'ritratto di utente')
-('FL1HSYW5YK', '@5H7KT', 'ritratto di utente')
-('FL1HSYW5YK', '@8W6HN', 'ritratto di utente')
-('FL1HSYW5YK', 'pianta', 'vegetale')
-('F2P7G3Y9VB', 'dispositivo', 'elettronica')
-('F9J3FZ4C1Q', '@4E8PQ', 'ritratto di utente')
-('F9J3FZ4C1Q', '@6L1HS', 'ritratto di utente')
-('F9J3FZ4C1Q', '@A6Q2M', 'ritratto di utente')
-('F0T2M3I6RB', '@H8P1W', 'ritratto di utente')
-('F7E1VQ2U9P', 'centro commericale', 'intrattenimento')
-('F7E1VQ2U9P', '@D4U8R', 'ritratto di utente')
-('F7E1VQ2U9P', '@M3N9Q', 'ritratto di utente')
-('F7E1VQ2U9P', '@X2P7G', 'ritratto di utente')
-('F5DYH4B8FO', 'pianta', 'vegetale')
-('F5DYH4B8FO', 'centro commericale', 'intrattenimento')
-('F5DYH4B8FO', '@1Y9VB', 'ritratto di utente')
-('F5DYH4B8FO', 'stadio', 'infrastruttura')
-('F5DYH4B8FO', 'dispositivo', 'elettronica')
-('FE2PQU3L6W', 'spettacolo teatrale', 'evento')
-('FE2PQU3L6W', '@8A3XQ', 'ritratto di utente')
-('F3L8W0X5IJ', '@B0R5J', 'ritratto di utente')
-('F3L8W0X5IJ', 'ritratto', 'foto')
-('F3L8W0X5IJ', 'cinema', 'intrattenimento')
-('FD1C14E8PQ', '@6L1HS', 'ritratto di utente')
-('F0R5P6J2KS', 'negozio', 'infrastuttura')
-('F0R5P6J2KS', 'discoteca', 'evento')
-('F0R5P6J2KS', 'strada', 'infrastuttura')
-('F0R5P6J2KS', '@4E8PQ', 'ritratto di utente')
-('F6U1Y9W5YK', 'università', 'educazione')
-('F6U1Y9W5YK', '@Z5C1Q', 'ritratto di utente')
-('F6U1Y9W5YK', '@4B8FO', 'ritratto di utente')
-('F6U1Y9W5YK', 'concerto', 'evento')
-('F6U1Y9W5YK', '@O4A9Q', 'ritratto di utente')
-('F2P7G9J3FD', '@C9K1R', 'ritratto di utente')
-('F2P7G9J3FD', '@R4V9E', 'ritratto di utente')
-('F2P7G9J3FD', 'pianta', 'vegetale')
-('F2P7G9J3FD', '@T6G2N', 'ritratto di utente')
-('F9J3F5C1QO', '@5H7KT', 'ritratto di utente')
-('F5C1LN0T8M', 'albero', 'vegetale')
-('F8Z3K3I6RB', '@9W5YK', 'ritratto di utente')
-('F8Z3K3I6RB', 'pianta', 'vegetale')
-('F4A0Q5H7KT', '@9Y4FD', 'ritratto di utente')
-('F4A0Q5H7KT', 'selfie', 'foto')
-('F4A0Q5H7KT', 'strada', 'infrastuttura')
-('F4A0Q5H7KT', '@L7O2W', 'ritratto di utente')
-('F4A0Q5H7KT', '@Y7A6Z', 'ritratto di utente')
-('FH7KT2L9C1', 'concerto', 'evento')
-('FH7KT2L9C1', '@0X5IJ', 'ritratto di utente')
-('FH7KT2L9C1', '@L7O2W', 'ritratto di utente')
-('FH7KT2L9C1', '@N0T8M', 'ritratto di utente')
-('FH7KT2L9C1', '@7S4NY', 'ritratto di utente')
-('FV0HC4EPPQ', '@9W5YK', 'ritratto di utente')
-('FV0HC4EPPQ', '@8A3XQ', 'ritratto di utente')
-('FV0HC4EPPQ', '@O4A9Q', 'ritratto di utente')
-('FV0HC4EPPQ', 'casa', 'infrastuttura')
-('FV0HC4EPPQ', 'negozio', 'infrastuttura')
-('F4U8O6J2KS', 'treno', 'veicolo')
-('F4U8O6J2KS', '@0X5IJ', 'ritratto di utente')
-('F5I2K1Y9VB', 'concerto', 'evento')
-('F5I2K1Y9VB', '@9W5YK', 'ritratto di utente')
-('F3X9Q8W6HN', 'sconosciuto', 'sconosciuto')
-('FA6ZF7S4NP', '@F6R1Y', 'ritratto di utente')
-('FA6ZF7S4NP', '@B0R5J', 'ritratto di utente')
-('FA6ZF7S4NP', '@4B8FO', 'ritratto di utente')
-('FA6ZF7S4NP', 'casa', 'infrastuttura')
-('FA6ZF7S4NP', 'gatto', 'animale')
-('F7O2W9N5YK', 'discoteca', 'evento')
-('F9B4O3I6RB', 'negozio', 'infrastuttura')
-('F1G2H3I4JN', 'ritratto', 'foto')
-('F1G2H3I4JN', 'paesaggio', 'natura')
-('F1G2H3I4JN', '@7F4ZP', 'ritratto di utente')
-('F1G2H3I4JN', '@9Y4FD', 'ritratto di utente')
-('F1G2H3I4JN', 'dispositivo', 'elettronica')
-('F3L9M1N2OP', '@A6Q2M', 'ritratto di utente')
-('F3L9M1N2OP', '@L7O2W', 'ritratto di utente')
-('F3L9M1N2OP', '@9W5YK', 'ritratto di utente')
-('F3L9M1N2OP', '@5H7KT', 'ritratto di utente')
-('F3L9M1N2OP', 'negozio', 'infrastuttura')
-('F4U8R5J6KL', '@8A3XQ', 'ritratto di utente')
-('F4U8R5J6KL', 'spettacolo teatrale', 'evento')
-('F4U8R5J6KL', 'cane', 'animale')
-('F5I7K9G2FR', '@3I6RB', 'ritratto di utente')
-('F9B4G1A6ZF', '@H8P1W', 'ritratto di utente')
-('F9B4G1A6ZF', 'discoteca', 'evento')
-('F9B4G1A6ZF', 'università', 'educazione')
-('F9B4G1A6ZF', 'foto di gruppo', 'foto')
-('F0R8X6J2KS', '@E5I7K', 'ritratto di utente')
-('F0R8X6J2KS', 'foto di gruppo', 'foto')
-('F0R8X6J2KS', '@2D9C1', 'ritratto di utente')
-('FL1HS9W5YK', '@Q2U9P', 'ritratto di utente')
-('F2P7G1Y9VB', '@0X5IJ', 'ritratto di utente')
-('F2P7G1Y9VB', 'università', 'educazione')
-('F2P7G1Y9VB', 'casa', 'infrastuttura')
-('F9J3FZ5C1Q', '@Q0R8X', 'ritratto di utente')
-('F9J3FZ5C1Q', '@K9G2F', 'ritratto di utente')
-('F9J3FZ5C1Q', '@Z5C1Q', 'ritratto di utente')
-('F0T8M3I6RB', '@2V0HC', 'ritratto di utente')
-('F0T8M3I6RB', '@X2P7G', 'ritratto di utente')
-('F0T8M3I6RB', '@R4V9E', 'ritratto di utente')
-('F0T8M3I6RB', '@T6G2N', 'ritratto di utente')
-('F0T8M3I6RB', '@M3N9Q', 'ritratto di utente')
-('F7E4VQ2U9P', 'edificio', 'infrastuttura')
-('F7E4VQ2U9P', '@L7O2W', 'ritratto di utente')
-('F7E4VQ2U9P', '@I2U9D', 'ritratto di utente')
-('F7E4VQ2U9P', '@2D9C1', 'ritratto di utente')
-('F7E4VQ2U9P', '@Z5C1Q', 'ritratto di utente')
-('F5D1H4B8FO', '@T6G2N', 'ritratto di utente')
-('F5D1H4B8FO', 'moto', 'veicolo')
-('FE8PHU3L6W', 'gatto', 'animale')
-('FE8PHU3L6W', 'università', 'educazione')
-('FE8PHU3L6W', 'centro commericale', 'intrattenimento')
-('FE8PHU3L6W', 'foto di gruppo', 'foto')
-('F3L6W0K5IJ', '@B0R5J', 'ritratto di utente')
-('F3L6W0K5IJ', 'paesaggio', 'natura')
-('F3L6W0K5IJ', '@Y5D1H', 'ritratto di utente')
-('F3L6W0K5IJ', '@3I6RB', 'ritratto di utente')
-('F3L6W0K5IJ', 'treno', 'veicolo')
-('FD9C14Q8PQ', 'stadio', 'infrastruttura')
-('F0M5P2J2KS', '@4E8PQ', 'ritratto di utente')
-('F0M5P2J2KS', '@K9G2F', 'ritratto di utente')
-('F0M5P2J2KS', 'selfie', 'foto')
-('F6R1Y9A5YK', 'cinema', 'intrattenimento')
-('F6R1Y9A5YK', 'strada', 'infrastuttura')
-('F6R1Y9A5YK', '@Z1C3L', 'ritratto di utente')
-('F6R1Y9A5YK', '@A6Q2M', 'ritratto di utente')
-('F2P7G9J3FP', 'paesaggio', 'natura')
-('F2P7G9J3FP', 'moto', 'veicolo')
-('F2P7G9J3FP', '@9W5YK', 'ritratto di utente')
-('F2P7G9J3FP', '@Z5C1Q', 'ritratto di utente')
-('F9J3F5C1TU', '@3I6RB', 'ritratto di utente')
-('F9J3F5C1TU', '@9Y4FD', 'ritratto di utente')
-('F9J3F5C1TU', 'università', 'educazione')
-('F9J3F5C1TU', 'discoteca', 'evento')
-('F5C1QN0TRM', 'centro commericale', 'intrattenimento')
-('F5C1QN0TRM', 'concerto', 'evento')
-('F8Z3G3I6EB', '@H9J3F', 'ritratto di utente')
-('F8Z3G3I6EB', '@8W6HN', 'ritratto di utente')
-('F8Z3G3I6EB', '@8A3XQ', 'ritratto di utente')
-('F4A9Q5U7KT', 'albero', 'vegetale')
-('F4A9Q5U7KT', '@7S4NY', 'ritratto di utente')
-('F4A9Q5U7KT', '@X2P7G', 'ritratto di utente')
-('F4A9Q5U7KT', '@1Y9VB', 'ritratto di utente')
-('FH7KT1D9C1', '@H8P1W', 'ritratto di utente')
-('FV9HC4E8PQ', '@1A6ZF', 'ritratto di utente')
-('F4UER6J2KS', '@K7E4V', 'ritratto di utente')
-('F4UER6J2KS', 'pianta', 'vegetale')
-('F4UER6J2KS', '@6J2KS', 'ritratto di utente')
-('F4UER6J2KS', 'stadio', 'infrastruttura')
-('F4UER6J2KS', '@L7O2W', 'ritratto di utente')
-('FWI7K1Y9VB', 'scuola', 'educazione')
-('FWI7K1Y9VB', 'pianta', 'vegetale')
-('FWI7K1Y9VB', 'strada', 'infrastuttura')
-('FWI7K1Y9VB', '@7F4ZP', 'ritratto di utente')
-('FWI7K1Y9VB', '@2V0HC', 'ritratto di utente')
-('F3N9Q8Q6HN', 'università', 'educazione')
-('F3N9Q8Q6HN', '@C9K1R', 'ritratto di utente')
-('FA6ZF7S4ZY', '@Y5D1H', 'ritratto di utente')
-('FRO2W9W5YK', 'pianta', 'vegetale')
-('FRO2W9W5YK', 'scuola', 'educazione')
-('FRO2W9W5YK', '@C9K1R', 'ritratto di utente')
-('FRO2W9W5YK', '@3T9XK', 'ritratto di utente')
-('F9R4G3I6RB', '@5H7KT', 'ritratto di utente')
-('F9R4G3I6RB', '@9W5YK', 'ritratto di utente')
-('F9R4G3I6RB', '@H8P1W', 'ritratto di utente')
-('F9R4G3I6RB', '@1Y9VB', 'ritratto di utente')
-('F9R4G3I6RB', '@O4A9Q', 'ritratto di utente')
-('F1H2O3J4KR', '@2D9C1', 'ritratto di utente')
-('F1H2O3J4KR', 'università', 'educazione')
-('F1H2O3J4KR', '@N0T8M', 'ritratto di utente')
-('F1H2O3J4KR', '@6J2KS', 'ritratto di utente')
-('F1H2O3J4KR', '@C9K1R', 'ritratto di utente')
-('F3M9N1O2PP', '@7S4NY', 'ritratto di utente')
-('F4R5J6K7L0', 'treno', 'veicolo')
-('F4R5J6K7L0', '@8A3XQ', 'ritratto di utente')
-('F5I7K9G2FF', '@P9B4G', 'ritratto di utente')
-('F9B4G1A6ZE', 'negozio', 'infrastuttura')
-('F9B4G1A6ZE', 'concerto', 'evento')
-('F9B4G1A6ZE', '@H8P1W', 'ritratto di utente')
-('F0R8X6JPKS', '@P9B4G', 'ritratto di utente')
-('F0R8X6JPKS', '@Z5C1Q', 'ritratto di utente')
-('F0R8X6JPKS', '@U3L6W', 'ritratto di utente')
-('FL1HS2W5YK', 'edificio', 'infrastuttura')
-('FL1HS2W5YK', '@2D9C1', 'ritratto di utente')
-('FL1HS2W5YK', 'cane', 'animale')
-('F2P7GGY9VB', 'sconosciuto', 'sconosciuto')
-('F0TPM3I6RB', '@L7O2W', 'ritratto di utente')
-('F0TPM3I6RB', '@0X5IJ', 'ritratto di utente')
-('F0TPM3I6RB', 'gatto', 'animale')
-('F0TPM3I6RB', 'dispositivo', 'elettronica')
-('F724VQ2U9P', '@A6Q2M', 'ritratto di utente')
-('F5D1H4B8PO', 'paesaggio', 'natura')
-('F5D1H4B8PO', '@K9G2F', 'ritratto di utente')
-('FE8PSU3L6W', '@A6Q2M', 'ritratto di utente')
-('F3L6W0D5IJ', '@Y7A6Z', 'ritratto di utente')
-('F3L6W0D5IJ', '@O4A9Q', 'ritratto di utente')
-('F3L6W0D5IJ', '@B0R5J', 'ritratto di utente')
-('F3L6W0D5IJ', '@O4A9Q', 'ritratto di utente')
-('F3L6W0D5IJ', '@B0R5J', 'ritratto di utente')
-('FD9C14EPPQ', '@E5I7K', 'ritratto di utente')
-('F0W5P6J2KS', '@C9K1R', 'ritratto di utente')
-('FDR1Y9W5YK', 'moto', 'veicolo')
-('FDR1Y9W5YK', 'pianta', 'vegetale')
-('FDR1Y9W5YK', '@P9B4G', 'ritratto di utente')
-('FDR1Y9W5YK', 'concerto', 'evento')
-('FDR1Y9W5YK', 'stadio', 'infrastruttura')
-('F2P7G9J3FL', 'centro commericale', 'intrattenimento')
-('F2P7G9J3FL', 'cinema', 'intrattenimento')
-('F2P7G9J3FL', '@T6G2N', 'ritratto di utente')
-('F2P7G9J3FL', '@7S4NY', 'ritratto di utente')
-('F2P7G9J3FL', '@1Y9VB', 'ritratto di utente')
-('F9J3F5C1QW', '@O4A9Q', 'ritratto di utente')
-('F9J3F5C1QW', '@J2O8U', 'ritratto di utente')
-('F9J3F5C1QW', 'cane', 'animale')
-('F5C1QN0T8X', '@H8P1W', 'ritratto di utente')
-('F8Z3G3I6R0', 'selfie', 'foto')
-('F8Z3G3I6R0', '@M3N9Q', 'ritratto di utente')
-('FPA9Q5H7KT', 'treno', 'veicolo')
-('FPA9Q5H7KT', '@3T9XK', 'ritratto di utente')
-('FPA9Q5H7KT', '@B0R5J', 'ritratto di utente')
-('FPA9Q5H7KT', 'foto di gruppo', 'foto')
-('FH7K02D9C1', 'albero', 'vegetale')
-('FV0HC4P8PQ', '@V0M5P', 'ritratto di utente')
-('FV0HC4P8PQ', '@P9B4G', 'ritratto di utente')
-('FV0HC4P8PQ', 'ritratto', 'foto')
-('FV0HC4P8PQ', 'università', 'educazione')
-('FV0HC4P8PQ', '@J2O8U', 'ritratto di utente')
-('F4U8R6N2KS', 'gatto', 'animale')
-('F5I1K1Y9VB', '@Z1C3L', 'ritratto di utente')
-('F5I1K1Y9VB', '@0X5IJ', 'ritratto di utente')
-('F3NNQ8W6HN', 'paesaggio', 'natura')
-('FA3ZF7S4NY', '@7S4NY', 'ritratto di utente')
-('FA3ZF7S4NY', '@P9B4G', 'ritratto di utente')
-('FA3ZF7S4NY', '@N0T8M', 'ritratto di utente')
-('FA3ZF7S4NY', '@J2O8U', 'ritratto di utente')
-('FXO2W9W5YK', 'gara di atletica', 'evento')
-('FXO2W9W5YK', '@4B8FO', 'ritratto di utente')
-('FXO2W9W5YK', '@Z5C1Q', 'ritratto di utente')
-('FXO2W9W5YK', 'albero', 'vegetale')
-('FXO2W9W5YK', 'paesaggio', 'natura')
-('F9BNG3I6RB', '@N0T8M', 'ritratto di utente')
-('F9BNG3I6RB', 'selfie', 'foto')
-('F9BNG3I6RB', 'cinema', 'intrattenimento')
-('F1H2LI3J4K', 'cane', 'animale')
-('F1H2LI3J4K', '@T6G2N', 'ritratto di utente')
-('F1H2LI3J4K', '@N0T8M', 'ritratto di utente')
-('F1H2LI3J4K', '@T6G2N', 'ritratto di utente')
-('F3M9N1O2PZ', 'discoteca', 'evento')
-('F3M9N1O2PZ', 'scuola', 'educazione')
-('F3M9N1O2PZ', 'università', 'educazione')
-('F3M9N1O2PZ', '@6J2KS', 'ritratto di utente')
-('F3M9N1O2PZ', '@A6Q2M', 'ritratto di utente')
-('F4R5J6K7LK', '@4B8FO', 'ritratto di utente')
-('F4R5J6K7LK', 'centro commericale', 'intrattenimento')
-('F5I7K9G2FS', '@9W5YK', 'ritratto di utente')
-('F9B4G1A6ZB', '@9Y4FD', 'ritratto di utente')
-('F0R8X6J2KQ', 'albero', 'vegetale')
-('F0R8X6J2KQ', 'cane', 'animale')
-('F0R8X6J2KQ', '@S7X4L', 'ritratto di utente')
-('F0R8X6J2KQ', '@O4A9Q', 'ritratto di utente')
-('F0R8X6J2KQ', '@4E8PQ', 'ritratto di utente')
-('FL1HS9W5YP', 'discoteca', 'evento')
-('FL1HS9W5YP', 'moto', 'veicolo')
-('FL1HS9W5YP', '@6J2KS', 'ritratto di utente')
-('FL1HS9W5YP', 'strada', 'infrastuttura')
-('FL1HS9W5YP', 'negozio', 'infrastuttura')
-('F2P7G1Y9VZ', '@H9J3F', 'ritratto di utente')
-('F9J3FP5C1Q', 'concerto', 'evento')
-('F0T8MCI6RB', 'scuola', 'educazione')
-('F0T8MCI6RB', 'albero', 'vegetale')
-('F7E4DQ2U9P', '@2V0HC', 'ritratto di utente')
-('F7E4DQ2U9P', '@Y7A6Z', 'ritratto di utente')
-('F7E4DQ2U9P', 'foto di gruppo', 'foto')
-('F7E4DQ2U9P', 'auto', 'veicolo')
-('F5DSH4B8FO', '@2D9C1', 'ritratto di utente')
-('F5DSH4B8FO', 'stadio', 'infrastruttura')
-('F5DSH4B8FO', '@2D9C1', 'ritratto di utente')
-('F5DSH4B8FO', 'moto', 'veicolo')
-('FD8PQU3L6W', '@9Y4FD', 'ritratto di utente')
-('FPL6W0X5IJ', 'negozio', 'infrastuttura')
-('FPL6W0X5IJ', 'selfie', 'foto')
-('FPL6W0X5IJ', 'bus', 'veicolo')
-('FPL6W0X5IJ', 'casa', 'infrastuttura')
-('FPL6W0X5IJ', '@Y5D1H', 'ritratto di utente')
-('FD9C14E8PQ', '@4B8FO', 'ritratto di utente')
-('F0M5P6J2KS', 'stadio', 'infrastruttura')
-('F0M5P6J2KS', '@1A6ZF', 'ritratto di utente')
-('F6R1Y9W5YK', '@Y5D1H', 'ritratto di utente')
-('F6R1Y9W5YK', '@1Y9VB', 'ritratto di utente')
-('FX2P7G9J3F', '@R4V9E', 'ritratto di utente')
-('F9J3F5C1QL', 'centro commericale', 'intrattenimento')
-('F9J3F5C1QL', '@9W5YK', 'ritratto di utente')
-('F9J3F5C1QL', 'strada', 'infrastuttura')
-('F5C1QN0T8M', 'sconosciuto', 'sconosciuto')
-('F8Z3G3I6RB', '@K9G2F', 'ritratto di utente')
-('F8Z3G3I6RB', '@0X5IJ', 'ritratto di utente')
-('F8Z3G3I6RB', '@U3L6W', 'ritratto di utente')
-('F4A9Q5H7KT', '@N8Z3G', 'ritratto di utente')
+('F1A2B3C4D5', '@9Y4FD', 'ritratto di utente'), 
+('F1A2B3C4D5', '@I2U9D', 'ritratto di utente'), 
+('F1A2B3C4D5', 'stadio', 'infrastruttura'), 
+('F5E6G7H8I9', 'albero', 'vegetale'), 
+('F5E6G7H8I9', 'gara di atletica', 'evento'), 
+('F5E6G7H8I9', 'auto', 'veicolo'), 
+('F9J0K1L2M3', '@3I6RB', 'ritratto di utente'), 
+('F9J0K1L2M3', 'concerto', 'evento'), 
+('F9J0K1L2M3', '@2V0HC', 'ritratto di utente'), 
+('F9J0K1L2M3', 'cinema', 'intrattenimento'), 
+('F9J0K1L2M3', '@S7X4L', 'ritratto di utente'), 
+('F3N4O5P6Q7', 'albero', 'vegetale'), 
+('F3N4O5P6Q7', '@4B8FO', 'ritratto di utente'), 
+('F3N4O5P6Q7', '@Q2U9P', 'ritratto di utente'), 
+('F7R8S9T0U1', '@6L1HS', 'ritratto di utente'), 
+('F7R8S9T0U1', 'auto', 'veicolo'), 
+('F1V2W3X4Y5', 'treno', 'veicolo'), 
+('F1V2W3X4Y5', 'centro commericale', 'intrattenimento'), 
+('F1V2W3X4Y5', 'cane', 'animale'), 
+('F1V2W3X4Y5', '@Q0R8X', 'ritratto di utente'), 
+('F5Z6A7B8C9', '@1Y9VB', 'ritratto di utente'), 
+('F9D1E2F3G4', 'albero', 'vegetale'), 
+('F9D1E2F3G4', '@N8Z3G', 'ritratto di utente'), 
+('F4H5I6J7K8', '@9Y4FD', 'ritratto di utente'), 
+('F4H5I6J7K8', '@O4A9Q', 'ritratto di utente'), 
+('F4H5I6J7K8', '@N8Z3G', 'ritratto di utente'), 
+('F4H5I6J7K8', 'cane', 'animale'), 
+('F4H5I6J7K8', '@0X5IJ', 'ritratto di utente'), 
+('F8L9M0N1O2', 'scuola', 'educazione'), 
+('F8L9M0N1O2', '@N0T8M', 'ritratto di utente'), 
+('F2P3Q4R5S6', 'bus', 'veicolo'), 
+('F6T7U8V9W0', '@8W6HN', 'ritratto di utente'), 
+('F6T7U8V9W0', '@2V0HC', 'ritratto di utente'), 
+('F6T7U8V9W0', '@C9K1R', 'ritratto di utente'), 
+('F6T7U8V9W0', '@Q2U9P', 'ritratto di utente'), 
+('FXY21ZABC3', 'gatto', 'animale'), 
+('FXY21ZABC3', '@I2U9D', 'ritratto di utente'), 
+('FXY21ZABC3', 'paesaggio', 'natura'), 
+('FXY21ZABC3', '@R4V9E', 'ritratto di utente'), 
+('FDEFGHIJKL', '@F6R1Y', 'ritratto di utente'), 
+('FDEFGHIJKL', '@Z5C1Q', 'ritratto di utente'), 
+('FDEFGHIJKL', 'gara di atletica', 'evento'), 
+('FDEFGHIJKL', 'cane', 'animale'), 
+('FDEFGHIJKL', 'auto', 'veicolo'), 
+('FMNOPQRSTU', '@P9B4G', 'ritratto di utente'), 
+('FMNOPQRSTU', '@D4U8R', 'ritratto di utente'), 
+('FUVWXYZ123', 'auto', 'veicolo'), 
+('FUVWXYZ123', 'ritratto', 'foto'), 
+('FUVWXYZ123', 'stadio', 'infrastruttura'), 
+('F456789012', '@Q0R8X', 'ritratto di utente'), 
+('F456789012', '@8W6HN', 'ritratto di utente'), 
+('F456789012', 'edificio', 'infrastuttura'), 
+('F456789012', '@7F4ZP', 'ritratto di utente'), 
+('F456789012', '@X1L3E', 'ritratto di utente'), 
+('F345678901', 'paesaggio', 'natura'), 
+('F678901234', 'scuola', 'educazione'), 
+('F678901234', '@4B8FO', 'ritratto di utente'), 
+('F678901234', '@5H7KT', 'ritratto di utente'), 
+('F678901234', '@8W6HN', 'ritratto di utente'), 
+('F678901234', 'concerto', 'evento'), 
+('F901234567', '@C9K1R', 'ritratto di utente'), 
+('F901234567', 'università', 'educazione'), 
+('F901234567', '@U3L6W', 'ritratto di utente'), 
+('F901234567', '@7F4ZP', 'ritratto di utente'), 
+('F234567890', '@Y5D1H', 'ritratto di utente'), 
+('F234567890', '@F6R1Y', 'ritratto di utente'), 
+('F234567890', '@Z1C3L', 'ritratto di utente'), 
+('F234567890', '@9Y4FD', 'ritratto di utente'), 
+('F678901ABC', 'gatto', 'animale'), 
+('F678901ABC', '@E5I7K', 'ritratto di utente'), 
+('F678901ABC', '@A6Q2M', 'ritratto di utente'), 
+('F678901ABC', '@A6Q2M', 'ritratto di utente'), 
+('F678901ABC', '@E5I7K', 'ritratto di utente'), 
+('F234567DEF', 'cane', 'animale'), 
+('F234567DEF', 'centro commericale', 'intrattenimento'), 
+('F234567DEF', 'casa', 'infrastuttura'), 
+('F567890GHI', 'cane', 'animale'), 
+('F567890GHI', 'auto', 'veicolo'), 
+('F901234566', 'sconosciuto', 'sconosciuto'), 
+('F23456789A', 'ritratto', 'foto'), 
+('F23456789A', '@E5I7K', 'ritratto di utente'), 
+('F56789CDEF', '@O4A9Q', 'ritratto di utente'), 
+('F56789CDEF', 'concerto', 'evento'), 
+('F56789CDEF', 'albero', 'vegetale'), 
+('F89GHIJ0KL', 'spettacolo teatrale', 'evento'), 
+('F89GHIJ0KL', '@X1L3E', 'ritratto di utente'), 
+('F234KLMNOP', '@7S4NY', 'ritratto di utente'), 
+('F234KLMNOP', '@3I6RB', 'ritratto di utente'), 
+('FQRSTU1234', 'moto', 'veicolo'), 
+('FQRSTU1234', '@U3L6W', 'ritratto di utente'), 
+('FQRSTU1234', '@7F4ZP', 'ritratto di utente'), 
+('FQRSTU1234', 'strada', 'infrastuttura'), 
+('FU1234VWXY', 'pianta', 'vegetale'), 
+('FU1234VWXY', '@Z1C3L', 'ritratto di utente'), 
+('FCD2345EFG', 'pianta', 'vegetale'), 
+('FCD2345EFG', '@7F4ZP', 'ritratto di utente'), 
+('FCD2345EFG', 'dispositivo', 'elettronica'), 
+('FCD2345EFG', '@6L1HS', 'ritratto di utente'), 
+('FIJKLM6789', '@I2U9D', 'ritratto di utente'), 
+('FIJKLM6789', 'casa', 'infrastuttura'), 
+('FIJKLM6789', 'università', 'educazione'), 
+('FPQRSTUWXY', 'moto', 'veicolo'), 
+('FPQRSTUWXY', 'gara di atletica', 'evento'), 
+('FXY123456H', '@1Y9VB', 'ritratto di utente'), 
+('FXY123456H', 'albero', 'vegetale'), 
+('FU1234567P', 'foto di gruppo', 'foto'), 
+('FU1234567P', '@X1L3E', 'ritratto di utente'), 
+('FU1234567P', '@V0M5P', 'ritratto di utente'), 
+('FU1234567P', 'dispositivo', 'elettronica'), 
+('FCD234567L', '@J2O8U', 'ritratto di utente'), 
+('FCD234567L', '@4B8FO', 'ritratto di utente'), 
+('FCD234567L', '@4B8FO', 'ritratto di utente'), 
+('FCD234567L', 'stadio', 'infrastruttura'), 
+('FIJKLM901R', 'strada', 'infrastuttura'), 
+('FPQRSTU325', '@U3L6W', 'ritratto di utente'), 
+('FPQRSTU325', '@3T9XK', 'ritratto di utente'), 
+('FPQRSTU325', 'gatto', 'animale'), 
+('FXY1234561', '@H8P1W', 'ritratto di utente'), 
+('FXY1234561', '@H9J3F', 'ritratto di utente'), 
+('FXY1234561', 'edificio', 'infrastuttura'), 
+('FU1234567N', 'selfie', 'foto'), 
+('FU1234567N', 'negozio', 'infrastuttura'), 
+('FU1234567N', '@V0M5P', 'ritratto di utente'), 
+('FU1234567N', 'auto', 'veicolo'), 
+('FCD234567S', '@4B8FO', 'ritratto di utente'), 
+('FCD234567S', 'bus', 'veicolo'), 
+('FIJKLM901W', 'scuola', 'educazione'), 
+('FIJKLM901W', 'negozio', 'infrastuttura'), 
+('FIJKLM901W', '@8W6HN', 'ritratto di utente'), 
+('FIJKLM901W', 'discoteca', 'evento'), 
+('FPQRSTU344', 'foto di gruppo', 'foto'), 
+('FPQRSTU344', 'discoteca', 'evento'), 
+('FPQRSTU344', '@X2P7G', 'ritratto di utente'), 
+('FPQRSTU344', 'cinema', 'intrattenimento'), 
+('FXY123456K', '@Y7A6Z', 'ritratto di utente'), 
+('FXY123456K', '@Q2U9P', 'ritratto di utente'), 
+('FXY123456K', '@X2P7G', 'ritratto di utente'), 
+('FXY123456K', 'foto di gruppo', 'foto'), 
+('FU1234567B', 'università', 'educazione'), 
+('FCD234567A', 'casa', 'infrastuttura'), 
+('FCD234567A', '@Z1C3L', 'ritratto di utente'), 
+('FCD234567A', '@2D9C1', 'ritratto di utente'), 
+('FIJKLM9018', 'scuola', 'educazione'), 
+('FIJKLM9018', 'albero', 'vegetale'), 
+('FIJKLM9018', '@C9K1R', 'ritratto di utente'), 
+('FIJKLM9018', 'università', 'educazione'), 
+('FPQRSTU34D', '@Z5C1Q', 'ritratto di utente'), 
+('FPQRSTU34D', '@8A3XQ', 'ritratto di utente'), 
+('FPQRSTU34D', 'dispositivo', 'elettronica'), 
+('FXY1234563', 'centro commericale', 'intrattenimento'), 
+('FXY1234563', 'ritratto', 'foto'), 
+('FXY1234563', 'casa', 'infrastuttura'), 
+('FU123U567Y', 'università', 'educazione'), 
+('FU123U567Y', '@4B8FO', 'ritratto di utente'), 
+('FU123U567Y', 'bus', 'veicolo'), 
+('FU123U567Y', '@1A6ZF', 'ritratto di utente'), 
+('FCD23O5678', '@Y5D1H', 'ritratto di utente'), 
+('FCD23O5678', 'discoteca', 'evento'), 
+('FIJKLM901O', 'centro commericale', 'intrattenimento'), 
+('FPQRSTU345', 'gara di atletica', 'evento'), 
+('FPQRSTU345', '@Z5C1Q', 'ritratto di utente'), 
+('FXY1234567', '@1Y9VB', 'ritratto di utente'), 
+('FXY1234567', 'gara di atletica', 'evento'), 
+('FU1234567Y', '@L7O2W', 'ritratto di utente'), 
+('FCD2345678', '@H8P1W', 'ritratto di utente'), 
+('FCD2345678', '@5H7KT', 'ritratto di utente'), 
+('FCD2345678', 'concerto', 'evento'), 
+('FIJKLM9012', '@P9B4G', 'ritratto di utente'), 
+('FIJKLM9012', 'discoteca', 'evento'), 
+('FIJKLM9012', 'bus', 'veicolo'), 
+('F1B2C3D4E9', 'scuola', 'educazione'), 
+('F1B2C3D4E9', 'albero', 'vegetale'), 
+('F1B2C3D4E9', 'cane', 'animale'), 
+('F3L9M1N2O2', '@8A3XQ', 'ritratto di utente'), 
+('F3L9M1N2O2', 'pianta', 'vegetale'), 
+('F3L9M1N2O2', 'selfie', 'foto'), 
+('F3L9M1N2O2', '@M3N9Q', 'ritratto di utente'), 
+('F4U8R5J6KE', 'sconosciuto', 'sconosciuto'), 
+('F5I7K9G2FP', 'gara di atletica', 'evento'), 
+('F5I7K9G2FP', '@X2P7G', 'ritratto di utente'), 
+('F9B4G1A6Z0', '@B0R5J', 'ritratto di utente'), 
+('F9B4G1A6Z0', '@Y7A6Z', 'ritratto di utente'), 
+('F9B4G1A6Z0', '@V0M5P', 'ritratto di utente'), 
+('F9B4G1A6Z0', 'treno', 'veicolo'), 
+('F0R8X6JOKS', '@Y7A6Z', 'ritratto di utente'), 
+('FL1HSYW5YK', 'cane', 'animale'), 
+('FL1HSYW5YK', '@T6G2N', 'ritratto di utente'), 
+('FL1HSYW5YK', '@5H7KT', 'ritratto di utente'), 
+('FL1HSYW5YK', '@8W6HN', 'ritratto di utente'), 
+('FL1HSYW5YK', 'pianta', 'vegetale'), 
+('F2P7G3Y9VB', 'dispositivo', 'elettronica'), 
+('F9J3FZ4C1Q', '@4E8PQ', 'ritratto di utente'), 
+('F9J3FZ4C1Q', '@6L1HS', 'ritratto di utente'), 
+('F9J3FZ4C1Q', '@A6Q2M', 'ritratto di utente'), 
+('F0T2M3I6RB', '@H8P1W', 'ritratto di utente'), 
+('F7E1VQ2U9P', 'centro commericale', 'intrattenimento'), 
+('F7E1VQ2U9P', '@D4U8R', 'ritratto di utente'), 
+('F7E1VQ2U9P', '@M3N9Q', 'ritratto di utente'), 
+('F7E1VQ2U9P', '@X2P7G', 'ritratto di utente'), 
+('F5DYH4B8FO', 'pianta', 'vegetale'), 
+('F5DYH4B8FO', 'centro commericale', 'intrattenimento'), 
+('F5DYH4B8FO', '@1Y9VB', 'ritratto di utente'), 
+('F5DYH4B8FO', 'stadio', 'infrastruttura'), 
+('F5DYH4B8FO', 'dispositivo', 'elettronica'), 
+('FE2PQU3L6W', 'spettacolo teatrale', 'evento'), 
+('FE2PQU3L6W', '@8A3XQ', 'ritratto di utente'), 
+('F3L8W0X5IJ', '@B0R5J', 'ritratto di utente'), 
+('F3L8W0X5IJ', 'ritratto', 'foto'), 
+('F3L8W0X5IJ', 'cinema', 'intrattenimento'), 
+('FD1C14E8PQ', '@6L1HS', 'ritratto di utente'), 
+('F0R5P6J2KS', 'negozio', 'infrastuttura'), 
+('F0R5P6J2KS', 'discoteca', 'evento'), 
+('F0R5P6J2KS', 'strada', 'infrastuttura'), 
+('F0R5P6J2KS', '@4E8PQ', 'ritratto di utente'), 
+('F6U1Y9W5YK', 'università', 'educazione'), 
+('F6U1Y9W5YK', '@Z5C1Q', 'ritratto di utente'), 
+('F6U1Y9W5YK', '@4B8FO', 'ritratto di utente'), 
+('F6U1Y9W5YK', 'concerto', 'evento'), 
+('F6U1Y9W5YK', '@O4A9Q', 'ritratto di utente'), 
+('F2P7G9J3FD', '@C9K1R', 'ritratto di utente'), 
+('F2P7G9J3FD', '@R4V9E', 'ritratto di utente'), 
+('F2P7G9J3FD', 'pianta', 'vegetale'), 
+('F2P7G9J3FD', '@T6G2N', 'ritratto di utente'), 
+('F9J3F5C1QO', '@5H7KT', 'ritratto di utente'), 
+('F5C1LN0T8M', 'albero', 'vegetale'), 
+('F8Z3K3I6RB', '@9W5YK', 'ritratto di utente'), 
+('F8Z3K3I6RB', 'pianta', 'vegetale'), 
+('F4A0Q5H7KT', '@9Y4FD', 'ritratto di utente'), 
+('F4A0Q5H7KT', 'selfie', 'foto'), 
+('F4A0Q5H7KT', 'strada', 'infrastuttura'), 
+('F4A0Q5H7KT', '@L7O2W', 'ritratto di utente'), 
+('F4A0Q5H7KT', '@Y7A6Z', 'ritratto di utente'), 
+('FH7KT2L9C1', 'concerto', 'evento'), 
+('FH7KT2L9C1', '@0X5IJ', 'ritratto di utente'), 
+('FH7KT2L9C1', '@L7O2W', 'ritratto di utente'), 
+('FH7KT2L9C1', '@N0T8M', 'ritratto di utente'), 
+('FH7KT2L9C1', '@7S4NY', 'ritratto di utente'), 
+('FV0HC4EPPQ', '@9W5YK', 'ritratto di utente'), 
+('FV0HC4EPPQ', '@8A3XQ', 'ritratto di utente'), 
+('FV0HC4EPPQ', '@O4A9Q', 'ritratto di utente'), 
+('FV0HC4EPPQ', 'casa', 'infrastuttura'), 
+('FV0HC4EPPQ', 'negozio', 'infrastuttura'), 
+('F4U8O6J2KS', 'treno', 'veicolo'), 
+('F4U8O6J2KS', '@0X5IJ', 'ritratto di utente'), 
+('F5I2K1Y9VB', 'concerto', 'evento'), 
+('F5I2K1Y9VB', '@9W5YK', 'ritratto di utente'), 
+('F3X9Q8W6HN', 'sconosciuto', 'sconosciuto'), 
+('FA6ZF7S4NP', '@F6R1Y', 'ritratto di utente'), 
+('FA6ZF7S4NP', '@B0R5J', 'ritratto di utente'), 
+('FA6ZF7S4NP', '@4B8FO', 'ritratto di utente'), 
+('FA6ZF7S4NP', 'casa', 'infrastuttura'), 
+('FA6ZF7S4NP', 'gatto', 'animale'), 
+('F7O2W9N5YK', 'discoteca', 'evento'), 
+('F9B4O3I6RB', 'negozio', 'infrastuttura'), 
+('F1G2H3I4JN', 'ritratto', 'foto'), 
+('F1G2H3I4JN', 'paesaggio', 'natura'), 
+('F1G2H3I4JN', '@7F4ZP', 'ritratto di utente'), 
+('F1G2H3I4JN', '@9Y4FD', 'ritratto di utente'), 
+('F1G2H3I4JN', 'dispositivo', 'elettronica'), 
+('F3L9M1N2OP', '@A6Q2M', 'ritratto di utente'), 
+('F3L9M1N2OP', '@L7O2W', 'ritratto di utente'), 
+('F3L9M1N2OP', '@9W5YK', 'ritratto di utente'), 
+('F3L9M1N2OP', '@5H7KT', 'ritratto di utente'), 
+('F3L9M1N2OP', 'negozio', 'infrastuttura'), 
+('F4U8R5J6KL', '@8A3XQ', 'ritratto di utente'), 
+('F4U8R5J6KL', 'spettacolo teatrale', 'evento'), 
+('F4U8R5J6KL', 'cane', 'animale'), 
+('F5I7K9G2FR', '@3I6RB', 'ritratto di utente'), 
+('F9B4G1A6ZF', '@H8P1W', 'ritratto di utente'), 
+('F9B4G1A6ZF', 'discoteca', 'evento'), 
+('F9B4G1A6ZF', 'università', 'educazione'), 
+('F9B4G1A6ZF', 'foto di gruppo', 'foto'), 
+('F0R8X6J2KS', '@E5I7K', 'ritratto di utente'), 
+('F0R8X6J2KS', 'foto di gruppo', 'foto'), 
+('F0R8X6J2KS', '@2D9C1', 'ritratto di utente'), 
+('FL1HS9W5YK', '@Q2U9P', 'ritratto di utente'), 
+('F2P7G1Y9VB', '@0X5IJ', 'ritratto di utente'), 
+('F2P7G1Y9VB', 'università', 'educazione'), 
+('F2P7G1Y9VB', 'casa', 'infrastuttura'), 
+('F9J3FZ5C1Q', '@Q0R8X', 'ritratto di utente'), 
+('F9J3FZ5C1Q', '@K9G2F', 'ritratto di utente'), 
+('F9J3FZ5C1Q', '@Z5C1Q', 'ritratto di utente'), 
+('F0T8M3I6RB', '@2V0HC', 'ritratto di utente'), 
+('F0T8M3I6RB', '@X2P7G', 'ritratto di utente'), 
+('F0T8M3I6RB', '@R4V9E', 'ritratto di utente'), 
+('F0T8M3I6RB', '@T6G2N', 'ritratto di utente'), 
+('F0T8M3I6RB', '@M3N9Q', 'ritratto di utente'), 
+('F7E4VQ2U9P', 'edificio', 'infrastuttura'), 
+('F7E4VQ2U9P', '@L7O2W', 'ritratto di utente'), 
+('F7E4VQ2U9P', '@I2U9D', 'ritratto di utente'), 
+('F7E4VQ2U9P', '@2D9C1', 'ritratto di utente'), 
+('F7E4VQ2U9P', '@Z5C1Q', 'ritratto di utente'), 
+('F5D1H4B8FO', '@T6G2N', 'ritratto di utente'), 
+('F5D1H4B8FO', 'moto', 'veicolo'), 
+('FE8PHU3L6W', 'gatto', 'animale'), 
+('FE8PHU3L6W', 'università', 'educazione'), 
+('FE8PHU3L6W', 'centro commericale', 'intrattenimento'), 
+('FE8PHU3L6W', 'foto di gruppo', 'foto'), 
+('F3L6W0K5IJ', '@B0R5J', 'ritratto di utente'), 
+('F3L6W0K5IJ', 'paesaggio', 'natura'), 
+('F3L6W0K5IJ', '@Y5D1H', 'ritratto di utente'), 
+('F3L6W0K5IJ', '@3I6RB', 'ritratto di utente'), 
+('F3L6W0K5IJ', 'treno', 'veicolo'), 
+('FD9C14Q8PQ', 'stadio', 'infrastruttura'), 
+('F0M5P2J2KS', '@4E8PQ', 'ritratto di utente'), 
+('F0M5P2J2KS', '@K9G2F', 'ritratto di utente'), 
+('F0M5P2J2KS', 'selfie', 'foto'), 
+('F6R1Y9A5YK', 'cinema', 'intrattenimento'), 
+('F6R1Y9A5YK', 'strada', 'infrastuttura'), 
+('F6R1Y9A5YK', '@Z1C3L', 'ritratto di utente'), 
+('F6R1Y9A5YK', '@A6Q2M', 'ritratto di utente'), 
+('F2P7G9J3FP', 'paesaggio', 'natura'), 
+('F2P7G9J3FP', 'moto', 'veicolo'), 
+('F2P7G9J3FP', '@9W5YK', 'ritratto di utente'), 
+('F2P7G9J3FP', '@Z5C1Q', 'ritratto di utente'), 
+('F9J3F5C1TU', '@3I6RB', 'ritratto di utente'), 
+('F9J3F5C1TU', '@9Y4FD', 'ritratto di utente'), 
+('F9J3F5C1TU', 'università', 'educazione'), 
+('F9J3F5C1TU', 'discoteca', 'evento'), 
+('F5C1QN0TRM', 'centro commericale', 'intrattenimento'), 
+('F5C1QN0TRM', 'concerto', 'evento'), 
+('F8Z3G3I6EB', '@H9J3F', 'ritratto di utente'), 
+('F8Z3G3I6EB', '@8W6HN', 'ritratto di utente'), 
+('F8Z3G3I6EB', '@8A3XQ', 'ritratto di utente'), 
+('F4A9Q5U7KT', 'albero', 'vegetale'), 
+('F4A9Q5U7KT', '@7S4NY', 'ritratto di utente'), 
+('F4A9Q5U7KT', '@X2P7G', 'ritratto di utente'), 
+('F4A9Q5U7KT', '@1Y9VB', 'ritratto di utente'), 
+('FH7KT1D9C1', '@H8P1W', 'ritratto di utente'), 
+('FV9HC4E8PQ', '@1A6ZF', 'ritratto di utente'), 
+('F4UER6J2KS', '@K7E4V', 'ritratto di utente'), 
+('F4UER6J2KS', 'pianta', 'vegetale'), 
+('F4UER6J2KS', '@6J2KS', 'ritratto di utente'), 
+('F4UER6J2KS', 'stadio', 'infrastruttura'), 
+('F4UER6J2KS', '@L7O2W', 'ritratto di utente'), 
+('FWI7K1Y9VB', 'scuola', 'educazione'), 
+('FWI7K1Y9VB', 'pianta', 'vegetale'), 
+('FWI7K1Y9VB', 'strada', 'infrastuttura'), 
+('FWI7K1Y9VB', '@7F4ZP', 'ritratto di utente'), 
+('FWI7K1Y9VB', '@2V0HC', 'ritratto di utente'), 
+('F3N9Q8Q6HN', 'università', 'educazione'), 
+('F3N9Q8Q6HN', '@C9K1R', 'ritratto di utente'), 
+('FA6ZF7S4ZY', '@Y5D1H', 'ritratto di utente'), 
+('FRO2W9W5YK', 'pianta', 'vegetale'), 
+('FRO2W9W5YK', 'scuola', 'educazione'), 
+('FRO2W9W5YK', '@C9K1R', 'ritratto di utente'), 
+('FRO2W9W5YK', '@3T9XK', 'ritratto di utente'), 
+('F9R4G3I6RB', '@5H7KT', 'ritratto di utente'), 
+('F9R4G3I6RB', '@9W5YK', 'ritratto di utente'), 
+('F9R4G3I6RB', '@H8P1W', 'ritratto di utente'), 
+('F9R4G3I6RB', '@1Y9VB', 'ritratto di utente'), 
+('F9R4G3I6RB', '@O4A9Q', 'ritratto di utente'), 
+('F1H2O3J4KR', '@2D9C1', 'ritratto di utente'), 
+('F1H2O3J4KR', 'università', 'educazione'), 
+('F1H2O3J4KR', '@N0T8M', 'ritratto di utente'), 
+('F1H2O3J4KR', '@6J2KS', 'ritratto di utente'), 
+('F1H2O3J4KR', '@C9K1R', 'ritratto di utente'), 
+('F3M9N1O2PP', '@7S4NY', 'ritratto di utente'), 
+('F4R5J6K7L0', 'treno', 'veicolo'), 
+('F4R5J6K7L0', '@8A3XQ', 'ritratto di utente'), 
+('F5I7K9G2FF', '@P9B4G', 'ritratto di utente'), 
+('F9B4G1A6ZE', 'negozio', 'infrastuttura'), 
+('F9B4G1A6ZE', 'concerto', 'evento'), 
+('F9B4G1A6ZE', '@H8P1W', 'ritratto di utente'), 
+('F0R8X6JPKS', '@P9B4G', 'ritratto di utente'), 
+('F0R8X6JPKS', '@Z5C1Q', 'ritratto di utente'), 
+('F0R8X6JPKS', '@U3L6W', 'ritratto di utente'), 
+('FL1HS2W5YK', 'edificio', 'infrastuttura'), 
+('FL1HS2W5YK', '@2D9C1', 'ritratto di utente'), 
+('FL1HS2W5YK', 'cane', 'animale'), 
+('F2P7GGY9VB', 'sconosciuto', 'sconosciuto'), 
+('F0TPM3I6RB', '@L7O2W', 'ritratto di utente'), 
+('F0TPM3I6RB', '@0X5IJ', 'ritratto di utente'), 
+('F0TPM3I6RB', 'gatto', 'animale'), 
+('F0TPM3I6RB', 'dispositivo', 'elettronica'), 
+('F724VQ2U9P', '@A6Q2M', 'ritratto di utente'), 
+('F5D1H4B8PO', 'paesaggio', 'natura'), 
+('F5D1H4B8PO', '@K9G2F', 'ritratto di utente'), 
+('FE8PSU3L6W', '@A6Q2M', 'ritratto di utente'), 
+('F3L6W0D5IJ', '@Y7A6Z', 'ritratto di utente'), 
+('F3L6W0D5IJ', '@O4A9Q', 'ritratto di utente'), 
+('F3L6W0D5IJ', '@B0R5J', 'ritratto di utente'), 
+('F3L6W0D5IJ', '@O4A9Q', 'ritratto di utente'), 
+('F3L6W0D5IJ', '@B0R5J', 'ritratto di utente'), 
+('FD9C14EPPQ', '@E5I7K', 'ritratto di utente'), 
+('F0W5P6J2KS', '@C9K1R', 'ritratto di utente'), 
+('FDR1Y9W5YK', 'moto', 'veicolo'), 
+('FDR1Y9W5YK', 'pianta', 'vegetale'), 
+('FDR1Y9W5YK', '@P9B4G', 'ritratto di utente'), 
+('FDR1Y9W5YK', 'concerto', 'evento'), 
+('FDR1Y9W5YK', 'stadio', 'infrastruttura'), 
+('F2P7G9J3FL', 'centro commericale', 'intrattenimento'), 
+('F2P7G9J3FL', 'cinema', 'intrattenimento'), 
+('F2P7G9J3FL', '@T6G2N', 'ritratto di utente'), 
+('F2P7G9J3FL', '@7S4NY', 'ritratto di utente'), 
+('F2P7G9J3FL', '@1Y9VB', 'ritratto di utente'), 
+('F9J3F5C1QW', '@O4A9Q', 'ritratto di utente'), 
+('F9J3F5C1QW', '@J2O8U', 'ritratto di utente'), 
+('F9J3F5C1QW', 'cane', 'animale'), 
+('F5C1QN0T8X', '@H8P1W', 'ritratto di utente'), 
+('F8Z3G3I6R0', 'selfie', 'foto'), 
+('F8Z3G3I6R0', '@M3N9Q', 'ritratto di utente'), 
+('FPA9Q5H7KT', 'treno', 'veicolo'), 
+('FPA9Q5H7KT', '@3T9XK', 'ritratto di utente'), 
+('FPA9Q5H7KT', '@B0R5J', 'ritratto di utente'), 
+('FPA9Q5H7KT', 'foto di gruppo', 'foto'), 
+('FH7K02D9C1', 'albero', 'vegetale'), 
+('FV0HC4P8PQ', '@V0M5P', 'ritratto di utente'), 
+('FV0HC4P8PQ', '@P9B4G', 'ritratto di utente'), 
+('FV0HC4P8PQ', 'ritratto', 'foto'), 
+('FV0HC4P8PQ', 'università', 'educazione'), 
+('FV0HC4P8PQ', '@J2O8U', 'ritratto di utente'), 
+('F4U8R6N2KS', 'gatto', 'animale'), 
+('F5I1K1Y9VB', '@Z1C3L', 'ritratto di utente'), 
+('F5I1K1Y9VB', '@0X5IJ', 'ritratto di utente'), 
+('F3NNQ8W6HN', 'paesaggio', 'natura'), 
+('FA3ZF7S4NY', '@7S4NY', 'ritratto di utente'), 
+('FA3ZF7S4NY', '@P9B4G', 'ritratto di utente'), 
+('FA3ZF7S4NY', '@N0T8M', 'ritratto di utente'), 
+('FA3ZF7S4NY', '@J2O8U', 'ritratto di utente'), 
+('FXO2W9W5YK', 'gara di atletica', 'evento'), 
+('FXO2W9W5YK', '@4B8FO', 'ritratto di utente'), 
+('FXO2W9W5YK', '@Z5C1Q', 'ritratto di utente'), 
+('FXO2W9W5YK', 'albero', 'vegetale'), 
+('FXO2W9W5YK', 'paesaggio', 'natura'), 
+('F9BNG3I6RB', '@N0T8M', 'ritratto di utente'), 
+('F9BNG3I6RB', 'selfie', 'foto'), 
+('F9BNG3I6RB', 'cinema', 'intrattenimento'), 
+('F1H2LI3J4K', 'cane', 'animale'), 
+('F1H2LI3J4K', '@T6G2N', 'ritratto di utente'), 
+('F1H2LI3J4K', '@N0T8M', 'ritratto di utente'), 
+('F1H2LI3J4K', '@T6G2N', 'ritratto di utente'), 
+('F3M9N1O2PZ', 'discoteca', 'evento'), 
+('F3M9N1O2PZ', 'scuola', 'educazione'), 
+('F3M9N1O2PZ', 'università', 'educazione'), 
+('F3M9N1O2PZ', '@6J2KS', 'ritratto di utente'), 
+('F3M9N1O2PZ', '@A6Q2M', 'ritratto di utente'), 
+('F4R5J6K7LK', '@4B8FO', 'ritratto di utente'), 
+('F4R5J6K7LK', 'centro commericale', 'intrattenimento'), 
+('F5I7K9G2FS', '@9W5YK', 'ritratto di utente'), 
+('F9B4G1A6ZB', '@9Y4FD', 'ritratto di utente'), 
+('F0R8X6J2KQ', 'albero', 'vegetale'), 
+('F0R8X6J2KQ', 'cane', 'animale'), 
+('F0R8X6J2KQ', '@S7X4L', 'ritratto di utente'), 
+('F0R8X6J2KQ', '@O4A9Q', 'ritratto di utente'), 
+('F0R8X6J2KQ', '@4E8PQ', 'ritratto di utente'), 
+('FL1HS9W5YP', 'discoteca', 'evento'), 
+('FL1HS9W5YP', 'moto', 'veicolo'), 
+('FL1HS9W5YP', '@6J2KS', 'ritratto di utente'), 
+('FL1HS9W5YP', 'strada', 'infrastuttura'), 
+('FL1HS9W5YP', 'negozio', 'infrastuttura'), 
+('F2P7G1Y9VZ', '@H9J3F', 'ritratto di utente'), 
+('F9J3FP5C1Q', 'concerto', 'evento'), 
+('F0T8MCI6RB', 'scuola', 'educazione'), 
+('F0T8MCI6RB', 'albero', 'vegetale'), 
+('F7E4DQ2U9P', '@2V0HC', 'ritratto di utente'), 
+('F7E4DQ2U9P', '@Y7A6Z', 'ritratto di utente'), 
+('F7E4DQ2U9P', 'foto di gruppo', 'foto'), 
+('F7E4DQ2U9P', 'auto', 'veicolo'), 
+('F5DSH4B8FO', '@2D9C1', 'ritratto di utente'), 
+('F5DSH4B8FO', 'stadio', 'infrastruttura'), 
+('F5DSH4B8FO', '@2D9C1', 'ritratto di utente'), 
+('F5DSH4B8FO', 'moto', 'veicolo'), 
+('FD8PQU3L6W', '@9Y4FD', 'ritratto di utente'), 
+('FPL6W0X5IJ', 'negozio', 'infrastuttura'), 
+('FPL6W0X5IJ', 'selfie', 'foto'), 
+('FPL6W0X5IJ', 'bus', 'veicolo'), 
+('FPL6W0X5IJ', 'casa', 'infrastuttura'), 
+('FPL6W0X5IJ', '@Y5D1H', 'ritratto di utente'), 
+('FD9C14E8PQ', '@4B8FO', 'ritratto di utente'), 
+('F0M5P6J2KS', 'stadio', 'infrastruttura'), 
+('F0M5P6J2KS', '@1A6ZF', 'ritratto di utente'), 
+('F6R1Y9W5YK', '@Y5D1H', 'ritratto di utente'), 
+('F6R1Y9W5YK', '@1Y9VB', 'ritratto di utente'), 
+('FX2P7G9J3F', '@R4V9E', 'ritratto di utente'), 
+('F9J3F5C1QL', 'centro commericale', 'intrattenimento'), 
+('F9J3F5C1QL', '@9W5YK', 'ritratto di utente'), 
+('F9J3F5C1QL', 'strada', 'infrastuttura'), 
+('F5C1QN0T8M', 'sconosciuto', 'sconosciuto'), 
+('F8Z3G3I6RB', '@K9G2F', 'ritratto di utente'), 
+('F8Z3G3I6RB', '@0X5IJ', 'ritratto di utente'), 
+('F8Z3G3I6RB', '@U3L6W', 'ritratto di utente'), 
+('F4A9Q5H7KT', '@N8Z3G', 'ritratto di utente'), 
 ('F4A9Q5H7KT', '@K7E4V', 'ritratto di utente')
