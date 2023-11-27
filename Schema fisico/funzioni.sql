@@ -55,6 +55,8 @@ END;
 $$
 LANGUAGE PLPGSQL;
 
+-Funzione che elimina una foto da una galleruia privana nel modo adeguato 
+
 CREATE OR REPLACE FUNCTION galleria.elimina_foto_gal_priv_fn(foto_da_eliminare IN galleria.id_object_dt)
 RETURNS VOID
 AS $$
@@ -80,3 +82,50 @@ BEGIN
 
 END;
 $$ LANGUAGE PLPGSQL;
+
+-- Funzione che genera un video  
+
+CREATE OR REPLACE FUNCTION galleria.creazione_video_fn(idgall IN galleria.id_object_dt, foto IN TEXT, descrizione IN TEXT, titolo IN galleria.string)
+RETURNS VOID
+AS $$
+DECLARE 
+ verifica INT;
+ singola_foto galleria.id_object_dt;
+ idv_tmp galleria.id_object_dt;
+ text_tmp TEXT;
+ 
+BEGIN 
+ SELECT COUNT(*) INTO verifica
+ FROM galleria.GALLERIA
+ WHERE idgalleria = idgall and condivisione  = false;
+ 
+ IF verifica = 0 THEN 
+  RAISE EXCEPTION 'La galleria che mi hai dato non esiste';
+ END IF;
+ 
+ idv_tmp := galleria.genera_id_fn('V');
+ 
+ INSERT INTO galleria.VIDEO VALUES (idv_tmp, titolo, descrizione, idgall);
+ 
+ 
+ WHILE LENGTH(foto) <> 0 LOOP
+  singola_foto := SUBSTRING(foto from 1 for 10);
+ 
+  SELECT COUNT(*) INTO verifica
+  FROM galleria.CONTENUTA
+  WHERE idgalleria = idgall and idfoto = singola_foto;
+ 
+  IF verifica <> 0 THEN
+   INSERT INTO galleria.COMPONE VALUES (idv_tmp, singola_foto);
+   UPDATE galleria.foto SET invideo = true WHERE idfoto = singola_foto;
+  END IF;
+  
+  text_tmp := SUBSTRING(foto from 12);
+  foto :=text_tmp;
+  
+ END LOOP;
+ 
+ 
+END;
+$$ 
+LANGUAGE PLPGSQL;
