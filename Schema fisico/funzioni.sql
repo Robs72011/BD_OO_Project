@@ -55,9 +55,9 @@ END;
 $$
 LANGUAGE PLPGSQL;
 
-CREATE OR REPLACE FUNCTION elimina_foto_gal_priv_fn(foto_da_eliminare IN galleria.id_user_dt)
-RETURN VOID
-AS$$
+CREATE OR REPLACE FUNCTION galleria.elimina_foto_gal_priv_fn(foto_da_eliminare IN galleria.id_user_dt)
+RETURNS VOID
+AS $$
 DECLARE
 	check_foto INT;
 BEGIN
@@ -74,8 +74,8 @@ BEGIN
 	WHERE idfoto = foto_da_eliminare AND idgalleria IN (
 		SELECT idgalleria
 		FROM galleria.GALLERIA
-		WHERE Condivisione = FALSE;
-	)
+		WHERE Condivisione = FALSE
+	);
 
 
 END;
