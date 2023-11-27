@@ -141,7 +141,6 @@
 ('FH7K02D9C1', 'Realme 8 Pro', '2021/05/23', NULL, True, False, '+39.90,+139.76', 'M3N9Q'),
 ('FV0HC4P8PQ', 'Samsung Galaxy A22', '2017/11/12', NULL, True, False, '+28.61,-079.42', 'S7X4L'),
 ('F4U8R6N2KS', 'Xiaomi Poco M3', '2016/08/18', NULL, True, False, '+06.52,+004.90', 'Q2U9P'),
-('F5I7K9G2FF', 'OnePlus Nord CE 5G', '2020/03/14', NULL, True, False, '+28.61,-122.41', 'H8P1W'),
 ('F3NNQ8W6HN', 'Nokia 7.2', '2019/09/27', NULL, True, False, '-51.51,+088.35', '3I6RB'),
 ('FA3ZF7S4NY', 'Vivo V21e', '2018/04/15', NULL, True, False, '+25.20,+012.49', '7F4ZP'),
 ('FXO2W9W5YK', 'Xiaomi Redmi Note 8', '2021/12/06', NULL, True, False, '+28.61,+002.35', 'T6G2N'),
