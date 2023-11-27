@@ -46,4 +46,9 @@
 ('K7E4V', 'Ava Scott', False),
 ('Q2U9P', 'Sam Turner', False),
 ('Y5D1H', 'Zoe Wilson', False),
-('4B8FO', 'Jacob Reed', False)
+('4B8FO', 'Jacob Reed', False),
+('BUFF0', 'Utente di Buffer', false);
+('0BIN0', 'Cestino', false);
+
+update galleria.galleria set idgalleria = 'GCESTINO00' where proprietario = '0BIN0';
+update galleria.galleria set idgalleria = 'GBUFFER000' where proprietario = 'BUFF1';
