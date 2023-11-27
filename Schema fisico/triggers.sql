@@ -437,11 +437,11 @@ DECLARE
 BEGIN
 
     SELECT CONDIVISIONE INTO tipo_gal
-    FROM GALLERIA
+    FROM galleria.GALLERIA
     WHERE IDGALLERIA = NEW.IDGALLERIA;
 
     SELECT COUNT(*) INTO check_id_gal_pers
-    FROM CONTENUTA NATURAL JOIN GALLERIA
+    FROM galleria.CONTENUTA NATURAL JOIN galleria.GALLERIA
     WHERE idfoto = NEW.idfoto AND Condivisione = FALSE;
 
     IF check_id_gal_pers > 0 AND tipo_gal = FALSE THEN
@@ -454,5 +454,5 @@ END;
 $$ LANGUAGE PLPGSQL;
 
 CREATE OR REPLACE TRIGGER stop_ins_gall_priv_altro_prop_fn
-BEFORE INSERT ON CONTENUTA
+BEFORE INSERT ON galleria.CONTENUTA
 FOR EACH ROW EXECUTE FUNCTION stop_ins_gall_priv_altro_prop_fn();
