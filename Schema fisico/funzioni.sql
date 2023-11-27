@@ -54,3 +54,29 @@ BEGIN
 END;
 $$
 LANGUAGE PLPGSQL;
+
+CREATE OR REPLACE FUNCTION elimina_foto_gal_priv_fn(foto_da_eliminare IN galleria.id_user_dt)
+RETURN VOID
+AS$$
+DECLARE
+	check_foto INT;
+BEGIN
+
+	SELECT COUNT(*) INTO check_foto
+	FROM galleria.FOTO
+	WHERE idfoto = foto_da_eliminare;
+
+	IF check_foto = 0 THEN
+		RAISE EXCEPTION 'La foto non esiste.';
+	END;
+
+	DELETE FROM galleria.CONTENUTA
+	WHERE idfoto = foto_da_eliminare AND idgalleria IN (
+		SELECT idgalleria
+		FROM galleria.GALLERIA
+		WHERE Condivisione = FALSE;
+	)
+
+
+END;
+$$ LANGUAGE PLPGSQL;

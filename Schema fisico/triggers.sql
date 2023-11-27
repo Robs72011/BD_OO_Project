@@ -396,7 +396,7 @@ $$ LANGUAGE PLPGSQL;
 
 CREATE OR REPLACE TRIGGER eliminazione_utente_admin_tr
 BEFORE DELETE ON galleria.UTENTE
-FOR EACH ROW EXECUTE FUNCTION eliminazione_utente_admin_fn()
+FOR EACH ROW EXECUTE FUNCTION eliminazione_utente_admin_fn();
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --trigger che controlla che all'inserimento di una foto in una galleria condivisa, l'autore della foto partecipi alla galleria condivisa
@@ -436,3 +436,34 @@ LANGUAGE PLPGSQL;
 CREATE OR REPLACE TRIGGER check_autore_partecipa_tr
 BEFORE INSERT ON galleria.CONTENUTA
 FOR EACH ROW EXECUTE FUNCTION galleria.check_autore_partecipa_fn();
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--trigger che impedisce l'inserimento di una foto in una galleria personale che non appartenga all'autore della foto
+CREATE OR REPLACE FUNCTION stop_ins_gall_priv_altro_prop_fn()
+RETURNS TRIGGER
+AS $$
+DECLARE
+    check_id_gal_pers INT;
+    tipo_gal BOOL;
+BEGIN
+
+    SELECT CONDIVISIONE INTO tipo_gal
+    FROM GALLERIA
+    WHERE IDGALLERIA = NEW.IDGALLERIA;
+
+    SELECT COUNT(*) INTO check_id_gal_pers
+    FROM CONTENUTA NATURAL JOIN GALLERIA
+    WHERE idfoto = NEW.idfoto AND Condivisione = FALSE;
+
+    IF check_id_gal_pers > 0 AND tipo_gal = FALSE THEN
+        RAISE EXCEPTION 'Questa foto ha e'' gia'' presente nella giusta galleria personale.';
+    END IF;
+    
+    RETURN NEW;
+
+END;
+$$ LANGUAGE PLPGSQL;
+
+CREATE OR REPLACE TRIGGER stop_ins_gall_priv_altro_prop_fn
+BEFORE INSERT ON CONTENUTA
+FOR EACH ROW EXECUTE FUNCTION stop_ins_gall_priv_altro_prop_fn();
