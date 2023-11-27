@@ -283,19 +283,19 @@ CREATE OR REPLACE FUNCTION galleria.controllo_soggetto_fn()
 RETURNS TRIGGER
 AS $$
 DECLARE
+    tmp galleria.string;
     buff galleria.string;
-    buff_2 galleria.string;
     controllo_lunghezza INT;
     presenza INT;
     newtext galleria.id_user_dt;
 BEGIN
 
     IF SUBSTRING(NEW.NomeSoggetto FROM 1 FOR 1) = '@' THEN 
-        buff_2 := SUBSTRING(NEW.NomeSoggetto FROM 2);
-        buff := UPPER(buff_2);
-        controllo_lunghezza := LENGTH(buff);
+        buff := SUBSTRING(NEW.NomeSoggetto FROM 2);
+        tmp := UPPER(buff);
+        controllo_lunghezza := LENGTH(tmp);
         IF controllo_lunghezza = 5 THEN 
-            newtext := buff::galleria.id_user_dt;
+            newtext := tmp::galleria.id_user_dt;
             SELECT COUNT(*) INTO presenza
             FROM galleria.UTENTE
             WHERE galleria.UTENTE.IDUtente = newtext;
@@ -303,7 +303,7 @@ BEGIN
             IF presenza = 0 THEN 
                 RAISE EXCEPTION 'Non pui inserire questo utente in quanto non esiste';
             ELSE 
-                NEW.NomeSoggetto := buff; 
+                NEW.NomeSoggetto := tmp; 
             END IF;
 
         ELSE 
@@ -312,8 +312,8 @@ BEGIN
 
         END IF;
     ELSE 
-        buff := LOWER(NEW.NomeSoggetto);
-        NEW.NomeSoggetto := buff; 
+        tmp := LOWER(NEW.NomeSoggetto);
+        NEW.NomeSoggetto := tmp; 
     END IF;
 
     RETURN NEW;
@@ -326,25 +326,13 @@ BEFORE INSERT ON galleria.SOGGETTO
 FOR EACH ROW EXECUTE FUNCTION galleria.controllo_soggetto_fn();
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
---CREARE TRIGGER PER CONTROLLO DELL'OWNER DI UNA GALLERIA CONDIVISA PER CAMBIO DI OWNER
-
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
---CREARE TRIGGER CHE CONTROLLA CHE SE UNA FOTO E' PRESENTE IN UNA GALLERIA PERSONALE E' PRESENTE ANCHE IL SUO AUTORE COME PARTECIPANTE ALLA GALLERIA
-
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
---CREARE TRIGGER CHE GESTISCE ELIMNAZIONE FOTO
-
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
---CREARE TRIGGER CHE ALL'INSERIMENTO DI UNA FOTO IN UNA GALLERIA CONDIVISA, CONTROLLA CHE L'AUTORE DELLA FOTO SIA UN PARTECIPANTE ALLA GALLERIA. 
-
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --trigger che gestisce le foto di un utente eliminato da un admin
 CREATE OR REPLACE FUNCTION eliminazione_utente_admin_fn()
 RETURNS TRIGGER
 AS $$
 BEGIN
     UPDATE galleria.FOTO 
-    SET autore = 'BUFF0'
+    SET autore = 'BUFF1'
     WHERE idfoto IN (
     SELECT foto 
     FROM galleria.SOGGETTO
@@ -355,28 +343,28 @@ BEGIN
         WHERE condivisione = true AND g.idgalleria IN(
             SELECT g.idgalleria
             FROM galleria.PARTECIPA p JOIN galleria.GALLERIA g on p.idgalleria = g.idgalleria
-            WHERE idutente = 'AB123' 
+            WHERE idutente = OLD.IDUtente 
         ) 
-    )AND nomesoggetto <> 'AB123' AND nomesoggetto IN (
+    )AND nomesoggetto <> OLD.IDUtente AND nomesoggetto IN (
             SELECT p.idutente
             FROM galleria.PARTECIPA p JOIN galleria.SOGGETTO s on p.idutente = s.nomesoggetto
             WHERE p.idgalleria IN(
                 SELECT idgalleria
                 FROM galleria.PARTECIPA 
-                WHERE idutente = 'AB123'
+                WHERE idutente = OLD.IDUtente
             )
         )
     );
 
-    UPDATE galleria.foto SET dataeliminazione = current_date WHERE autore = 'AB123';
+    UPDATE galleria.foto SET dataeliminazione = current_date WHERE autore = OLD.IDUtente;
 
-    DELETE FROM galleria.foto WHERE autore = 'AB123' AND invideo = FALSE;
+    DELETE FROM galleria.foto WHERE autore = OLD.IDUtente AND invideo = FALSE;
 
     --passo da galleria privata a quella del cestino
-    UPDATE galleria.contenuta SET idgalleria = 'GIKBZ20E1R'  WHERE idgalleria IN (
+    UPDATE galleria.contenuta SET idgalleria = 'GCESTINO00'  WHERE idgalleria IN (
         SELECT idgalleria
         FROM galleria.galleria
-        WHERE proprietario = 'AB123' AND condivisione = FALSE
+        WHERE proprietario = OLD.IDUtente AND condivisione = FALSE
     );
 
     --
@@ -387,10 +375,10 @@ BEGIN
     ) AND idfoto IN (
         SELECT idfoto
         FROM galleria.FOTO
-        WHERE autore = 'AB123'
+        WHERE autore = OLD.IDUtente
     );
 
-    UPDATE galleria.FOTO SET autore = '0BIN0' WHERE autore = 'AB123';
+    UPDATE galleria.FOTO SET autore = '0BIN0' WHERE autore = OLD.IDUtente;
 END;
 $$ LANGUAGE PLPGSQL;
 
@@ -439,6 +427,7 @@ FOR EACH ROW EXECUTE FUNCTION galleria.check_autore_partecipa_fn();
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --trigger che impedisce l'inserimento di una foto in una galleria personale che non appartenga all'autore della foto
+
 CREATE OR REPLACE FUNCTION stop_ins_gall_priv_altro_prop_fn()
 RETURNS TRIGGER
 AS $$
