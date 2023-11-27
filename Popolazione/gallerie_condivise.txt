@@ -67,4 +67,4 @@
 ('GZ6HGHPKSS', 'Galleria condivisa di Monica condivisa davis', True, '2D9C1'), 
 ('GQDHNGSQIL', 'Galleria condivisa di Bryan Wilson', True, '4E8PQ'), 
 ('G6FMV5Q34A', 'Galleria condivisa di Rachel Miller', True, '8W6HN'), 
-('GZ8V3N6Z7M', 'Galleria condivisa di Emma Wilson', True, 'N0T8M')]
+('GZ8V3N6Z7M', 'Galleria condivisa di Emma Wilson', True, 'N0T8M');
