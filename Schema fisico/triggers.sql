@@ -379,51 +379,13 @@ BEGIN
     );
 
     UPDATE galleria.FOTO SET autore = '0BIN0' WHERE autore = OLD.IDUtente;
+	RETURN NEW;
 END;
 $$ LANGUAGE PLPGSQL;
 
 CREATE OR REPLACE TRIGGER eliminazione_utente_admin_tr
-BEFORE DELETE ON galleria.UTENTE
+AFTER DELETE ON galleria.UTENTE
 FOR EACH ROW EXECUTE FUNCTION galleria.eliminazione_utente_admin_fn();
-
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
---trigger che controlla che all'inserimento di una foto in una galleria condivisa, l'autore della foto partecipi alla galleria condivisa
-CREATE OR REPLACE FUNCTION galleria.check_autore_partecipa_fn()
-RETURNS TRIGGER
-AS $$
-DECLARE
-    gallery_type BOOLEAN;
-    autore_new_foto galleria.id_user_dt;
-BEGIN
-    SELECT Condivisione INTO gallery_type
-    FROM galleria.GALLERIA
-    WHERE idgalleria = NEW.idgalleria;
-
-
-    IF gallery_type = FALSE THEN
-        RETURN NEW;
-    ELSE
-        SELECT autore INTO autore_new_foto
-        FROM galleria.FOTO
-        WHERE idfoto = NEW.idfoto;
-
-        IF (SELECT COUNT(autore_new_foto)
-           FROM galleria.PARTECIPA
-           WHERE idgalleria = NEW.idgalleria) > 0 THEN
-            RETURN NEW;
-        ELSE
-            RAISE EXCEPTION 'L''autore della foto % non partecipa alla galleria condivisa, quindi non puo''inserire foto.', NEW.idfoto;
-        END IF;
-
-
-    END IF;
-END;
-$$
-LANGUAGE PLPGSQL;
-
-CREATE OR REPLACE TRIGGER check_autore_partecipa_tr
-BEFORE INSERT ON galleria.CONTENUTA
-FOR EACH ROW EXECUTE FUNCTION galleria.check_autore_partecipa_fn();
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --trigger che impedisce l'inserimento di una foto in una galleria personale che non appartenga all'autore della foto
