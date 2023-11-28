@@ -327,7 +327,7 @@ FOR EACH ROW EXECUTE FUNCTION galleria.controllo_soggetto_fn();
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --trigger che gestisce le foto di un utente eliminato da un admin
-CREATE OR REPLACE FUNCTION eliminazione_utente_admin_fn()
+CREATE OR REPLACE FUNCTION galleria.eliminazione_utente_admin_fn()
 RETURNS TRIGGER
 AS $$
 BEGIN
@@ -384,7 +384,7 @@ $$ LANGUAGE PLPGSQL;
 
 CREATE OR REPLACE TRIGGER eliminazione_utente_admin_tr
 BEFORE DELETE ON galleria.UTENTE
-FOR EACH ROW EXECUTE FUNCTION eliminazione_utente_admin_fn();
+FOR EACH ROW EXECUTE FUNCTION galleria.eliminazione_utente_admin_fn();
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --trigger che controlla che all'inserimento di una foto in una galleria condivisa, l'autore della foto partecipi alla galleria condivisa
