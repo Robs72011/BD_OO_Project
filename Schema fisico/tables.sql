@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS galleria.GALLERIA(
     CONSTRAINT check_iniziale_idgalleria CHECK(IDGalleria ~ '^G'),
 
     CONSTRAINT proprietario_fk FOREIGN KEY (Proprietario) REFERENCES galleria.UTENTE(IDUtente)
-        ON UPDATE CASCADE ON DELETE NO ACTION
+        ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS galleria.VIDEO(
