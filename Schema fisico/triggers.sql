@@ -418,3 +418,42 @@ $$ LANGUAGE PLPGSQL;
 CREATE OR REPLACE TRIGGER stop_ins_gall_priv_altro_prop_tr
 BEFORE INSERT ON galleria.CONTENUTA
 FOR EACH ROW EXECUTE FUNCTION galleria.stop_ins_gall_priv_altro_prop_fn();
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--trigger che controlla che all'inserimento di una foto in una galleria condivisa, l'autore della foto partecipi alla galleria condivisa
+CREATE OR REPLACE FUNCTION galleria.check_autore_partecipa_fn()
+RETURNS TRIGGER
+AS $$
+DECLARE
+    gallery_type BOOLEAN;
+    autore_new_foto galleria.id_user_dt;
+BEGIN
+    SELECT Condivisione INTO gallery_type
+    FROM galleria.GALLERIA
+    WHERE idgalleria = NEW.idgalleria;
+
+
+    IF gallery_type = FALSE THEN
+        RETURN NEW;
+    ELSE
+        SELECT autore INTO autore_new_foto
+        FROM galleria.FOTO
+        WHERE idfoto = NEW.idfoto;
+
+        IF (SELECT COUNT(*)
+           FROM galleria.PARTECIPA
+           WHERE idgalleria = NEW.idgalleria AND idutente = autore_new_foto) > 0 THEN
+            RETURN NEW;
+        ELSE
+            RAISE EXCEPTION 'L''autore della foto % non partecipa alla galleria condivisa, quindi non puo''inserire foto.', NEW.idfoto;
+        END IF;
+
+
+    END IF;
+END;
+$$
+LANGUAGE PLPGSQL;
+
+CREATE OR REPLACE TRIGGER check_autore_partecipa_tr
+BEFORE INSERT ON galleria.CONTENUTA
+FOR EACH ROW EXECUTE FUNCTION galleria.check_autore_partecipa_fn();
