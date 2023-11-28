@@ -237,26 +237,6 @@ AFTER INSERT ON galleria.GALLERIA
 FOR EACH ROW EXECUTE FUNCTION galleria.insert_partecipa_proprietario_gall_fn();
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
---trigger che evita l'eliminazione dell'utente admin
-CREATE OR REPLACE FUNCTION galleria.stop_eliminazione_admin_fn()
-RETURNS TRIGGER
-AS $$
-BEGIN
-    IF OLD.IsAdmin = TRUE THEN
-        RAISE EXCEPTION 'L''admin non può essere eliminato.';
-    ELSE
-        RETURN NEW;
-    END IF;
-END;
-$$
-LANGUAGE PLPGSQL;
-
-CREATE OR REPLACE TRIGGER stop_eliminazione_admin_tr
-AFTER DELETE ON galleria.UTENTE
-FOR EACH ROW EXECUTE FUNCTION galleria.stop_eliminazione_admin_fn();
-
-
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --update che impedisce ad un utente di diventare admin e il contrario.
 CREATE OR REPLACE FUNCTION galleria.stop_update_isadmin_fn()
 RETURNS TRIGGER
