@@ -55,8 +55,7 @@ END;
 $$
 LANGUAGE PLPGSQL;
 
--Funzione che elimina una foto da una galleruia privana nel modo adeguato 
-
+--Funzione che elimina una foto da una galleruia privana nel modo adeguato 
 CREATE OR REPLACE FUNCTION galleria.elimina_foto_gal_priv_fn(foto_da_eliminare IN galleria.id_object_dt)
 RETURNS VOID
 AS $$
@@ -70,7 +69,7 @@ BEGIN
 
 	IF check_foto = 0 THEN
 		RAISE EXCEPTION 'La foto non esiste.';
-	END;
+	END IF;
 
 	DELETE FROM galleria.CONTENUTA
 	WHERE idfoto = foto_da_eliminare AND idgalleria IN (
@@ -79,6 +78,20 @@ BEGIN
 		WHERE Condivisione = FALSE
 	);
 
+	SELECT COUNT(*) INTO check_foto
+	FROM galleria.CONTENUTA
+	WHERE idfoto = foto_da_eliminare;
+
+	IF check_foto = 0 THEN
+
+		UPDATE galleria.FOTO 
+		SET dataeliminazione = current_date 
+		WHERE idfoto = foto_da_eliminare AND invideo = TRUE;
+
+		DELETE FROM galleria.FOTO
+		WHERE idfoto = foto_da_eliminare AND invideo = FALSE;
+
+	END IF;
 
 END;
 $$ LANGUAGE PLPGSQL;
