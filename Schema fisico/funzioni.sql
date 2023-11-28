@@ -70,7 +70,7 @@ BEGIN
 
 	IF check_foto = 0 THEN
 		RAISE EXCEPTION 'La foto non esiste.';
-	END;
+	END IF;
 
 	DELETE FROM galleria.CONTENUTA
 	WHERE idfoto = foto_da_eliminare AND idgalleria IN (
