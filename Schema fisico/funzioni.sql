@@ -92,12 +92,20 @@ BEGIN
 		WHERE idfoto = foto_da_eliminare AND invideo = FALSE;
 
 	END IF;
-
+	
+	SELECT COUNT(*) INTO check_foto
+	FROM galleria.CONTENUTA
+	WHERE idfoto = foto_da_eliminare;
+	
+	IF check_foto = 0 THEN
+		UPDATE galleria.FOTO SET dataeliminazione = current_date WHERE idfoto = foto_da_eliminare AND invideo = true;
+		DELETE FROM galleria.FOTO WHERE idfoto = foto_da_eliminare AND invideo = false;
+	END IF;
+	
 END;
 $$ LANGUAGE PLPGSQL;
 
 -- Funzione che genera un video  
-
 CREATE OR REPLACE FUNCTION galleria.creazione_video_fn(idgall IN galleria.id_object_dt, foto IN TEXT, descrizione IN TEXT, titolo IN galleria.string)
 RETURNS VOID
 AS $$
