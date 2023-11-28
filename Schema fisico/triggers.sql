@@ -252,7 +252,7 @@ $$
 LANGUAGE PLPGSQL;
 
 CREATE OR REPLACE TRIGGER stop_eliminazione_admin_tr
-BEFORE DELETE ON galleria.UTENTE
+AFTER DELETE ON galleria.UTENTE
 FOR EACH ROW EXECUTE FUNCTION galleria.stop_eliminazione_admin_fn();
 
 
@@ -331,6 +331,11 @@ CREATE OR REPLACE FUNCTION galleria.eliminazione_utente_admin_fn()
 RETURNS TRIGGER
 AS $$
 BEGIN
+
+    IF OLD.IsAdmin = TRUE THEN
+        RAISE EXCEPTION 'L''utente admin non può essere eliminato';
+    END IF;
+
     UPDATE galleria.FOTO 
     SET autore = 'BUFF1'
     WHERE idfoto IN (
@@ -365,6 +370,10 @@ BEGIN
         SELECT idgalleria
         FROM galleria.galleria
         WHERE proprietario = OLD.IDUtente AND condivisione = FALSE
+    ) AND idfoto NOT IN (
+        SELECT idfoto
+        FROM galleria.FOTO
+        WHERE autore = 'BUFF1'
     );
 
     --
@@ -379,12 +388,13 @@ BEGIN
     );
 
     UPDATE galleria.FOTO SET autore = '0BIN0' WHERE autore = OLD.IDUtente;
-	RETURN NEW;
+
+	RETURN OLD;
 END;
 $$ LANGUAGE PLPGSQL;
 
 CREATE OR REPLACE TRIGGER eliminazione_utente_admin_tr
-AFTER DELETE ON galleria.UTENTE
+BEFORE DELETE ON galleria.UTENTE
 FOR EACH ROW EXECUTE FUNCTION galleria.eliminazione_utente_admin_fn();
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
