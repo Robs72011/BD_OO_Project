@@ -428,7 +428,7 @@ FOR EACH ROW EXECUTE FUNCTION galleria.check_autore_partecipa_fn();
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --trigger che impedisce l'inserimento di una foto in una galleria personale che non appartenga all'autore della foto
 
-CREATE OR REPLACE FUNCTION stop_ins_gall_priv_altro_prop_fn()
+CREATE OR REPLACE FUNCTION galleria.stop_ins_gall_priv_altro_prop_fn()
 RETURNS TRIGGER
 AS $$
 DECLARE
@@ -455,4 +455,4 @@ $$ LANGUAGE PLPGSQL;
 
 CREATE OR REPLACE TRIGGER stop_ins_gall_priv_altro_prop_tr
 BEFORE INSERT ON galleria.CONTENUTA
-FOR EACH ROW EXECUTE FUNCTION stop_ins_gall_priv_altro_prop_fn();
+FOR EACH ROW EXECUTE FUNCTION galleria.stop_ins_gall_priv_altro_prop_fn();
