@@ -55,8 +55,7 @@ END;
 $$
 LANGUAGE PLPGSQL;
 
--Funzione che elimina una foto da una galleruia privana nel modo adeguato 
-
+--Funzione che elimina una foto da una galleruia privana nel modo adeguato 
 CREATE OR REPLACE FUNCTION galleria.elimina_foto_gal_priv_fn(foto_da_eliminare IN galleria.id_object_dt)
 RETURNS VOID
 AS $$
@@ -90,8 +89,8 @@ BEGIN
 	
 END;
 $$ LANGUAGE PLPGSQL;
--- Funzione che genera un video  
 
+-- Funzione che genera un video  
 CREATE OR REPLACE FUNCTION galleria.creazione_video_fn(idgall IN galleria.id_object_dt, foto IN TEXT, descrizione IN TEXT, titolo IN galleria.string)
 RETURNS VOID
 AS $$
